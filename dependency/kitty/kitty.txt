@@ -1,0 +1,2 @@
+# Install font
+pacma -S ttf-jetbrains-mono

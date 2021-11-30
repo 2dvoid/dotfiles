@@ -1,0 +1,7 @@
+# Most Pager
+pacman -S most
+
+# Plugins
+
+# Clipcopy
+pacman -S xclip

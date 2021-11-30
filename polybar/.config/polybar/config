@@ -1,0 +1,1056 @@
+;; ┌────────────────────────────────────────────────────────────┐
+;; │░█▀█░█▀█░█░░░█░█░█▀▄░█▀█░█▀▄░░░░░░░░░█▀▀░█▀█░█▀█░█▀▀░▀█▀░█▀▀│
+;; │░█▀▀░█░█░█░░░░█░░█▀▄░█▀█░█▀▄░░░░▀░░░░█░░░█░█░█░█░█▀▀░░█░░█░█│
+;; │░▀░░░▀▀▀░▀▀▀░░▀░░▀▀░░▀░▀░▀░▀░░░░▀░░░░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀│
+;; └────────────────────────────────────────────────────────────┘
+
+
+
+[color]
+
+;; main colors
+background = #2f343f
+background-alt = #C4C7C5
+foreground = #1C1E20
+foreground-alt = #C4C7C5
+primary = #B4BC67
+
+white = #FFFFFF
+black = #000000
+red = #EC7875
+pink = #EC6798
+purple = #BE78D1
+blue = #75A4CD
+cyan = #00C7DF
+teal = #00B19F
+green = #61C766
+lime = #B9C244
+yellow = #EBD369
+amber = #EDB83F
+orange = #E57C46
+brown = #AC8476
+gray = #9E9E9E
+indigo = #6C77BB
+blue-gray = #6D8895
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+;; Global WM Settings
+
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+;; Bar Settings
+
+[bar/main]
+
+override-redirect = true
+bottom = true
+fixed-center = true
+
+width = 100%
+height = 34
+
+offset-x = 0%
+offset-y = 0%
+
+background = #2e3440
+foreground = ${color.foreground}
+
+radius-top = 0.0
+radius-bottom = 0.0
+
+line-size = 5
+line-color = ${color.background}
+
+border-bottom-size = 0
+border-bottom-color = ${color.primary}
+
+padding = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+;;Fonts
+
+font-0 = "Iosevka Nerd Font:size=12;4"
+font-1 = "feather:size=12;4"
+
+
+
+
+;; Modules
+
+modules-left = sep launcher sep workspaces sep
+modules-center = title
+modules-right = sep date sep pulseaudio sep cpu sep powermenu sep
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+separator =
+
+dim-value = 1.0
+
+; Value to be used to set the WM_NAME atom
+; If the value is empty or undefined, the atom value
+; will be created from the following template: polybar-[BAR]_[MONITOR]
+; NOTE: The placeholders are not available for custom values
+wm-name = 
+
+; Locale used to localize various module data (e.g. date)
+; Expects a valid libc locale, for example: sv_SE.UTF-8
+locale = 
+
+;   i3 (requires: `override-redirect = true`)
+wm-restack = i3
+
+
+; Enable support for inter-process messaging
+enable-ipc = true
+
+; Fallback click handlers that will be called if
+; there's no matching module handler found.
+click-left = 
+click-middle = 
+click-right =
+scroll-up =
+scroll-down =
+double-click-left =
+double-click-middle =
+double-click-right =
+
+cursor-click =
+cursor-scroll =
+
+
+;; WM Workspace Specific
+
+;i3
+;;scroll-up = i3wm-wsnext
+;;scroll-down = i3wm-wsprev
+;;scroll-up = i3-msg workspace next_on_output
+;;scroll-down = i3-msg workspace prev_on_output
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+;; Application Settings
+
+[settings]
+; The throttle settings lets the eventloop swallow up til X events
+; if they happen within Y millisecond after first event was received.
+; This is done to prevent flood of update event.
+;
+; For example if 5 modules emit an update event at the same time, we really
+; just care about the last one. But if we wait too long for events to swallow
+; the bar would appear sluggish so we continue if timeout
+; expires or limit is reached.
+throttle-output = 5
+throttle-output-for = 10
+
+; Time in milliseconds that the input handler will wait between processing events
+;throttle-input-for = 30
+
+; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
+screenchange-reload = false
+
+; Compositing operators
+; @see: https://www.cairographics.org/manual/cairo-cairo-t.html#cairo-operator-t
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+; Define fallback values used by all module formats
+;format-foreground = 
+;format-background = 
+;format-underline =
+;format-overline =
+;format-spacing =
+;format-padding =
+;format-margin =
+;format-offset =
+
+; Enables pseudo-transparency for the bar
+; If set to true the bar can be transparent without a compositor.
+pseudo-transparency = false
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+                ;;MODULES
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+;; Modules
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 1
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+;;format = <label> <ramp-coreload>
+format = <label>
+format-prefix = 
+format-prefix-background = ${color.teal}
+format-prefix-padding = 1
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+; Available tokens:
+;   %percentage% (default) - total cpu load averaged over all cores
+;   %percentage-sum% - Cumulative load on all cores
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = "%percentage%%"
+label-background = ${color.background-alt}
+label-padding = 1
+
+; Spacing between individual per-core ramps
+;;ramp-coreload-spacing = 1
+;;ramp-coreload-0 = ${cpu.load0}
+;;ramp-coreload-1 = ${cpu.load1}
+
+;;ramp-load-0 = ${cpu.load0}
+;;ramp-load-1 = ${cpu.load1}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 50.0
+
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+;;date = %Y-%m-%d%
+
+; Optional time format
+time = "%I:%M %p"
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+;;date-alt = %A, %d %B %Y
+time-alt = "%a, %d %b %Y"
+
+; Available tags:
+;   <label> (default)
+format = <label>
+format-prefix = 
+format-prefix-background = ${color.amber}
+format-prefix-padding = 1
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+; Available tokens:
+;   %date%
+;   %time%
+; Default: %date%
+label = %time%
+label-background = ${color.background-alt}
+label-padding = 1
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+;;mount-1 = /home
+;;mount-2 = /var
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 30
+
+; Display fixed precision values
+; Default: false
+fixed-values = true
+
+; Spacing between entries
+; Default: 2
+;;spacing = 4
+
+; Available tags:
+;   <label-mounted> (default)
+;   <bar-free>
+;   <bar-used>
+;   <ramp-capacity>
+format-mounted = <label-mounted>
+format-mounted-prefix = 
+format-mounted-prefix-background = ${color.green}
+format-mounted-prefix-padding = 1
+format-mounted-overline = ${color.background}
+format-mounted-underline = ${color.background}
+
+; Available tags:
+;   <label-unmounted> (default)
+format-unmounted = <label-unmounted>
+format-unmounted-prefix = 
+format-unmounted-prefix-background = ${color.red}
+format-unmounted-prefix-padding = 1
+format-unmounted-overline = ${color.background}
+format-unmounted-underline = ${color.background}
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+label-mounted = "%free%"
+label-mounted-background = ${color.background-alt}
+label-mounted-padding = 1
+
+; Available tokens:
+;   %mountpoint%
+; Default: %mountpoint% is not mounted
+label-unmounted = "%mountpoint%: NA"
+label-unmounted-background = ${color.background-alt}
+label-unmounted-padding = 1
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 1
+
+; Available tags:
+;   <label> (default)
+;   <bar-used>
+;   <bar-free>
+;   <ramp-used>
+;   <ramp-free>
+;   <bar-swap-used>
+;   <bar-swap-free>
+;   <ramp-swap-used>
+;   <ramp-swap-free>
+format = <label>
+format-prefix = 
+format-prefix-background = ${color.brown}
+format-prefix-padding = 1
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+;   %percentage_swap_used%
+;   %percentage_swap_free%
+;   %mb_swap_total%
+;   %mb_swap_free%
+;   %mb_swap_used%
+;   %gb_swap_total%
+;   %gb_swap_free%
+;   %gb_swap_used%
+
+label = "%mb_used%"
+label-background = ${color.background-alt}
+label-padding = 1
+
+; Only applies if <ramp-used> is used
+;;ramp-used-0 = ${memory.used0}
+;;ramp-used-1 = ${memory.used1}
+;;ramp-used-2 = ${memory.used2}
+
+; Only applies if <ramp-free> is used
+;;ramp-free-0 = ${memory.free0}
+;;ramp-free-1 = ${memory.free1}
+;;ramp-free-2 = ${memory.free2}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/mpd]
+type = internal/mpd
+
+; Host where mpd is running (either ip or domain name)
+; Can also be the full path to a unix socket where mpd is running.
+;;host = 127.0.0.1
+;;port = 6600
+;;password = mysecretpassword
+
+; Seconds to sleep between progressbar/song timer sync
+; Default: 1
+interval = 1
+
+; Available tags:
+;   <label-song> (default)
+;   <label-time>
+;   <bar-progress>
+;   <toggle> - gets replaced with <icon-(pause|play)>
+;   <toggle-stop> - gets replaced with <icon-(stop|play)>
+;   <icon-random>
+;   <icon-repeat>
+;   <icon-repeatone> (deprecated)
+;   <icon-single> - Toggle playing only a single song. Replaces <icon-repeatone>
+;   <icon-consume>
+;   <icon-prev>
+;   <icon-stop>
+;   <icon-play>
+;   <icon-pause>
+;   <icon-next>
+;   <icon-seekb>
+;   <icon-seekf>
+format-online = <toggle><label-song><icon-next>
+;format-online-prefix = 
+format-online-overline = ${color.background}
+format-online-underline = ${color.background}
+
+;format-playing = ${self.format-online}
+;format-paused = ${self.format-online}
+;format-stopped = ${self.format-online}
+
+; Available tags:
+;   <label-offline>
+format-offline = <label-offline>
+format-offline-prefix = 
+format-offline-prefix-background = ${color.red}
+format-offline-prefix-padding = 1
+format-offline-overline = ${color.background}
+format-offline-underline = ${color.background}
+
+; Available tokens:
+;   %artist%
+;   %album-artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song =  "%artist% - %title%"
+label-song-maxlen = 25
+label-song-ellipsis = true
+label-song-background = ${color.background-alt}
+label-song-padding = 1
+
+; Available tokens:
+;   %elapsed%
+;   %total%
+; Default: %elapsed% / %total%
+label-time = %elapsed% / %total%
+label-time-background = ${color.background-alt}
+label-time-padding = 1
+
+; Available tokens:
+;   None
+label-offline = "Offline"
+label-offline-background = ${color.background-alt}
+label-offline-padding = 1
+
+; Only applies if <icon-X> is used
+icon-play = 
+icon-play-background = ${color.red}
+icon-play-padding = 1
+icon-pause = 
+icon-pause-padding = 1
+icon-pause-background = ${color.green}
+icon-stop = " "
+icon-stop-background = ${color.background-alt}
+icon-next = " "
+icon-next-background = ${color.background-alt}
+icon-prev = " "
+icon-prev-background = ${color.background-alt}
+icon-seekf = 
+icon-seekb = 
+icon-random = 
+icon-repeat = 
+icon-repeatone = 
+icon-single = 
+icon-consume =
+
+; Used to display the state of random/repeat/repeatone/single
+; Only applies if <icon-[random|repeat|repeatone|single]> is used
+toggle-on-foreground = ${color.primary}
+toggle-off-foreground = ${color.red}
+
+; Only applies if <bar-progress> is used
+;;bar-progress-width = 45
+;;bar-progress-indicator = |
+;;bar-progress-fill = ─
+;;bar-progress-empty = ─
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_03_00.6.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = false
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume><label-volume>
+format-volume-overline = ${color.background}
+format-volume-underline = ${color.background}
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-muted = <label-muted>
+format-muted-prefix = 
+format-muted-prefix-background = ${color.red}
+format-muted-prefix-padding = 1
+format-muted-overline = ${color.background}
+format-muted-underline = ${color.background}
+
+; Available tokens:
+;   %percentage% (default)
+label-volume = %percentage%%
+label-volume-background = ${color.background-alt}
+label-volume-padding = 1
+
+; Available tokens:
+;   %percentage% (default
+label-muted = "Muted"
+label-muted-foreground = ${color.foreground}
+label-muted-background = ${color.background-alt}
+label-muted-padding = 1
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-background = ${color.blue}
+ramp-volume-padding = 1
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+;;hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+hwmon-path = /sys/devices/pci0000:00/0000:00:02.2/0000:26:00.0/nvme/nvme0/hwmon0/temp1_input
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 65
+
+; Whether or not to show units next to the temperature tokens (°C, °F)
+; Default: true
+units = true
+
+; Available tags:
+;   <label> (default)
+;   <ramp>
+format = <ramp><label>
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+; Available tags:
+;   <label-warn> (default)
+;   <ramp>
+format-warn = <ramp><label-warn>
+format-warn-overline = ${color.background}
+format-warn-underline = ${color.background}
+
+; Available tokens:
+;   %temperature% (deprecated)
+;   %temperature-c%   (default, temperature in °C)
+;   %temperature-f%   (temperature in °F)
+label = %temperature-c%
+label-background = ${color.background-alt}
+label-padding = 1
+
+; Available tokens:
+;   %temperature% (deprecated)
+;   %temperature-c%   (default, temperature in °C)
+;   %temperature-f%   (temperature in °F)
+label-warn = "%temperature-c%"
+label-warn-background = ${color.background-alt}
+label-warn-padding = 1
+
+; Requires the <ramp> tag
+; The icon selection will range from 0 to `warn-temperature`
+; with the current temperature as index.
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-background = ${color.cyan}
+ramp-padding = 1
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/keyboard]
+type = internal/xkeyboard
+
+; List of indicators to ignore
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+; Available tags:
+;   <label-layout> (default)
+;   <label-indicator> (default)
+format = <label-layout><label-indicator>
+format-prefix = 
+format-prefix-background = ${color.blue-gray}
+format-prefix-padding = 1
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+; Available tokens:
+;   %layout%
+;   %name%
+;   %number%
+; Default: %layout%
+label-layout = "%layout%"
+label-layout-background = ${color.background-alt}
+label-layout-padding = 1
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-indicator-on = "%name% "
+label-indicator-on-background = ${color.background-alt}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/title]
+type = internal/xwindow
+
+; Available tags:
+;   <label> (default)
+format = <label>
+format-prefix = 
+format-padding = 1
+format-foreground = ${color.foreground-alt}
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = " %title%"
+label-maxlen = 30
+
+; Used instead of label when there is no window title
+label-empty = " Desktop"
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/workspaces]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = true
+
+; icon-[0-9]+ = <desktop-name>;<icon>
+; NOTE: The desktop name needs to match the name configured by the WM
+; You can get a list of the defined desktops using:
+; $ xprop -root _NET_DESKTOP_NAMES
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;3
+icon-3 = 4;4
+icon-4 = 5;5
+icon-default = 
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
+; Default: <label-state>
+format = <label-state>
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-monitor = %name%
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-active = %icon%
+label-active-foreground = ${color.background}
+label-active-background = #eba834
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied = %icon%
+label-occupied-foreground = ${color.foreground}
+label-occupied-background = ${color.gray}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = %icon%
+label-urgent-foreground = ${color.foreground}
+label-urgent-background = ${color.red}
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty = %icon%
+label-empty-foreground = ${color.foreground}
+label-empty-background = ${color.background-alt}
+
+label-active-padding = 1
+label-urgent-padding = 1
+label-occupied-padding = 1
+label-empty-padding = 1
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+              ;;USER_MODULES
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+[module/updates]
+type = custom/script
+
+; Available tokens:
+;   %counter%
+; Command to be executed (using "/usr/bin/env sh -c [command]")
+exec = ~/.config/polybar/scripts/updates.sh
+
+; Conditional command that, if defined, needs to exit successfully
+; before the main exec command is invoked.
+; Default: ""
+;;exec-if = ""
+
+; Will the script output continous content?
+; Default: false
+tail = true
+
+; Seconds to sleep between updates
+; Default: 2 (0 if `tail = true`)
+interval = 5
+
+; Available tags:
+;   <output> - deprecated
+;   <label> (default)
+format = <label>
+format-prefix = 
+format-prefix-background = ${color.yellow}
+format-prefix-padding = 1
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+; Available tokens:
+;   %output%
+; Default: %output%
+label = %output%
+label-background = ${color.background-alt}
+label-padding = 1
+
+; Available tokens:
+;   %counter%
+;   %pid%
+;
+; "click-(left|middle|right)" will be executed using "/usr/bin/env sh -c [command]"
+click-left = exo-open --launch TerminalEmulator &
+click-right = exo-open --launch TerminalEmulator &
+;;double-click-left = echo double left %counter%
+;;double-click-middle = echo double middle %counter%
+;;double-click-right = echo double right %counter%
+
+; Available tokens:
+;   %counter%
+;   %pid%
+;
+; "scroll-(up|down)" will be executed using "/usr/bin/env sh -c [command]"
+;;scroll-up = echo scroll up %counter%
+;;scroll-down = echo scroll down %counter%
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/launcher]
+type = custom/text
+
+content-prefix = 
+content-prefix-background = ${color.teal}
+content-prefix-padding = 1
+
+content = " Menu "
+content-background = ${color.background-alt}
+content-foreground = ${color.foreground}
+content-overline = ${color.background}
+content-underline = ${color.background}
+
+;;"click-(left|middle|right)" will be executed using "/usr/bin/env sh -c $COMMAND"
+click-left = $HOME/.config/rofi/launcher/launcher.sh
+;;click-middle = ~/.config/polybar/scripts/launcher-full
+;;click-right = /home/ghost/.config/rofi/bin/launcher_colorful
+
+; "scroll-(up|down)" will be executed using "/usr/bin/env sh -c $COMMAND"
+;;scroll-up = ~/.config/polybar/scripts/launcher.sh &
+;;scroll-down = ~/.config/polybar/scripts/color-switch.sh &
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/sysmenu]
+type = custom/text
+
+content-prefix = 
+content-prefix-background = ${color.cyan}
+content-prefix-padding = 1
+
+content = " System "
+content-background = ${color.background-alt}
+content-foreground = ${color.foreground}
+content-overline = ${color.background}
+content-underline = ${color.background}
+
+click-left = ~/rofi/powermenu/menu_powermenu 
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/color-switch]
+type = custom/text
+
+content-prefix = 
+content-prefix-background = ${color.orange}
+content-prefix-padding = 1
+
+content = " Style "
+content-background = ${color.background-alt}
+content-foreground = ${color.foreground}
+content-overline = ${color.background}
+content-underline = ${color.background}
+
+click-left = ~/.config/polybar/scripts/style-switch.sh &
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/sep]
+type = custom/text
+content = |
+
+content-background = ${color.background}
+content-foreground = ${color.background}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/apps]
+type = custom/text
+content-overline = ${color.background}
+content-underline = ${color.background}
+content-padding = 1
+
+[module/term]
+inherit = module/apps
+content = 
+content-background = ${color.blue-gray}
+content-foreground = ${color.foreground}
+click-left = termite &
+click-middle = urxvt &
+click-right = xfce4-terminal &
+
+[module/files]
+inherit = module/apps
+content = 
+content-background = ${color.blue}
+content-foreground = ${color.foreground}
+click-left = thunar &
+click-right = pcmanfm &
+
+[module/browser]
+inherit = module/apps
+content = 
+content-background = ${color.orange}
+content-foreground = ${color.foreground}
+click-left = firefox &
+click-right = chromium &
+
+[module/settings]
+inherit = module/apps
+content = 
+content-background = ${color.teal}
+content-foreground = ${color.foreground}
+click-left = xfce4-settings-manager &
+click-right = lxappearance &
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/powermenu]
+type = custom/menu
+
+; If true, <label-toggle> will be to the left of the menu items (default).
+; If false, it will be on the right of all the items.
+expand-right = true
+
+; "menu-LEVEL-N" has the same properties as "label-NAME" with
+; the additional "exec" property
+;
+; Available exec commands:
+;   menu-open-LEVEL
+;   menu-close
+; Other commands will be executed using "/usr/bin/env sh -c $COMMAND"
+menu-0-0 = " Reboot |"
+menu-0-0-background = ${color.background-alt}
+menu-0-0-exec = menu-open-1
+menu-0-1 = " Shutdown "
+menu-0-1-background = ${color.background-alt}
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = " Back |"
+menu-1-0-background = ${color.background-alt}
+menu-1-0-exec = menu-open-0
+menu-1-1 = " Reboot "
+menu-1-1-background = ${color.background-alt}
+menu-1-1-exec = systemctl reboot
+
+menu-2-0 = " Shutdown |"
+menu-2-0-background = ${color.background-alt}
+menu-2-0-exec = systemctl poweroff
+menu-2-1 = " Back "
+menu-2-1-background = ${color.background-alt}
+menu-2-1-exec = menu-open-0
+
+; Available tags:
+;   <label-toggle> (default) - gets replaced with <label-(open|close)>
+;   <menu> (default)
+; Note that if you use <label-toggle> you must also include
+; the definition for <label-open>
+
+format = <label-toggle><menu>
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+label-open = 
+label-open-background = ${color.cyan}
+label-open-padding = 1
+label-close =  
+label-close-background = ${color.red}
+label-close-padding = 1
+
+; Optional item separator
+; Default: none
+;label-separator = " | "
+;label-separator-foreground = ${color.foreground}
+;label-separator-background = ${color.background-alt}
+
+;;label-open-foreground = ${color.foreground}
+;;label-close-foreground = ${color.background}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/menu]
+type = custom/menu
+
+; If true, <label-toggle> will be to the left of the menu items (default).
+; If false, it will be on the right of all the items.
+expand-right = true
+
+; "menu-LEVEL-N" has the same properties as "label-NAME" with
+; the additional "exec" property
+;
+; Available exec commands:
+;   menu-open-LEVEL
+;   menu-close
+; Other commands will be executed using "/usr/bin/env sh -c $COMMAND"
+menu-0-0 ="  Menu | "
+menu-0-0-background = ${color.background-alt}
+menu-0-0-exec = ~/.config/polybar/scripts/launcher.sh &
+
+menu-0-1 =" Files | "
+menu-0-1-background = ${color.background-alt}
+menu-0-1-exec = thunar &
+
+menu-0-2 =" Terminal | "
+menu-0-2-background = ${color.background-alt}
+menu-0-2-exec = termite &
+
+menu-0-3 =" Browser "
+menu-0-3-background = ${color.background-alt}
+menu-0-3-exec = firefox &
+
+; Available tags:
+;   <label-toggle> (default) - gets replaced with <label-(open|close)>
+;   <menu> (default)
+; Note that if you use <label-toggle> you must also include
+; the definition for <label-open>
+
+format = <label-toggle><menu>
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+label-open = 
+label-open-background = ${color.yellow}
+label-open-padding = 1
+label-close =  
+label-close-background = ${color.red}
+label-close-padding = 1
+
+; Optional item separator
+; Default: none
+;label-separator = " | "
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

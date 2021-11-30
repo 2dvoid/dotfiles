@@ -1,0 +1,6 @@
+# Copy fonts to local fonts directory
+cp fonts/* ~/.local/share/fonts
+
+# Modules
+rofi
+pulseaudio

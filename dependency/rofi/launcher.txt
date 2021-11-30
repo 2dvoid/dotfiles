@@ -1,0 +1,5 @@
+# Install Icon Teme
+pacman -S papirus-icon-theme
+
+# Copy fonts to local fonts folder
+cp fonts/* ~/.local/share/fonts
