@@ -1,0 +1,315 @@
+#############################################
+#              VARIABLES
+#############################################
+
+# Modifier Key
+set $mod Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $HOME "$(echo $HOME)"
+set $term kitty
+set $menu wmenu-run
+#set $browser firefox
+
+
+#############################################
+#              AUTOSTART
+#############################################
+#exec swaync
+## Cliboard Manager (Cliphist)
+# Cliphist (For History)
+#exec wl-paste --watch cliphist store
+# wl-clip-persist
+exec wl-clip-persist --clipboard regular
+exec chat-gpt
+exec zen-browser
+exec thunar
+exec ticktick
+
+#############################################
+#              INPUT DEVICES
+#############################################
+seat * hide_cursor 3000
+
+#input "type:keyboard" {
+#    xkb_layout us
+#    repeat_delay 300
+#    repeat_rate 30
+#}
+
+#input "type:touchpad" {
+#    tap enabled
+#    natural_scroll enabled
+#}
+
+#############################################
+#              OUTPUTS / MONITORS
+#############################################
+#output eDP-1 {
+#    resolution 1920x1080
+#    scale 1.0
+#    adaptive_sync on
+#}
+
+#############################################
+#              GENERAL SETTINGS
+#############################################
+#xwayland disable
+workspace_layout stacking
+focus_wrapping no
+smart_borders on
+default_border pixel 2
+font pango:IosevkaNerdFontMono 10
+title_align center
+#titlebar_padding 5
+hide_edge_borders --i3 smart
+#focus_follows_mouse no
+#focus_wrapping yes
+
+#############################################
+#              KEYBINDINGS
+#############################################
+
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+Backspace kill
+
+# Start your launcher
+bindsym $mod+space exec $menu
+
+# File Manager: Yazi
+#bindsym $mod+e exec "$term -e yazi"
+
+# Launch default browser
+#bindsym $mod+s exec xdg-open http://
+# Launch or Raise Zen Browser
+#bindsym $mod+s exec "sway-focus zen zen-browser"
+
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
+
+## Moving around:
+
+# Vim Keys
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Arrow Keys
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
+
+# Mouse Well Bind
+bindsym --whole-window $mod+button4 focus up
+bindsym --whole-window $mod+button5 focus down
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+#bindsym $mod+Shift+Left move left
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
+
+## Fullscreen
+bindsym $mod+f fullscreen toggle
+
+## Power Off
+bindsym $mod+Control+Alt+Backspace exec 'systemctl poweroff'
+
+## Control Volume with Super+Control+k, Super+Control+j:
+bindsym --locked $mod+Control+k exec wpctl set-volume @DEFAULT_SINK@ 5%+ --limit 1
+bindsym --locked $mod+Control+j exec wpctl set-volume @DEFAULT_SINK@ 5%- --limit 1
+
+## Control Volume with Super+Control+up, Super+Control+down:
+bindsym --locked $mod+Control+up exec wpctl set-volume @DEFAULT_SINK@ 5%+ --limit 1
+bindsym --locked $mod+Control+down exec wpctl set-volume @DEFAULT_SINK@ 5%- --limit 1
+
+## Control Volume with Media Buttons
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+ --limit 1
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%- --limit 1
+
+## Toggle Play/Pause with the Keyborad Knob/Dial
+bindsym --locked XF86AudioMute exec playerctl play-pause
+
+
+## Audio Playback Control:
+bindsym --locked --no-repeat XF86AudioPlay exec playerctl play-pause
+bindsym --locked --no-repeat $mod+Control+Space exec playerctl play-pause
+bindsym --locked --no-repeat XF86AudioNext exec playerctl next
+bindsym --locked --no-repeat $mod+Control+right exec playerctl next
+bindsym --locked --no-repeat XF86AudioPrev exec playerctl previous
+bindsym --locked --no-repeat $mod+Control+left exec playerctl previous
+
+################################## Workspaces #################################################
+
+# Switch to workspace
+#bindsym $mod+1 workspace number 1
+#bindsym $mod+2 workspace number 2
+#bindsym $mod+3 workspace number 3
+#bindsym $mod+4 workspace number 4
+#bindsym $mod+5 workspace number 5
+#bindsym $mod+6 workspace number 6
+#bindsym $mod+7 workspace number 7
+#bindsym $mod+8 workspace number 8
+#bindsym $mod+9 workspace number 9
+#bindsym $mod+0 workspace number 10
+
+#bindsym $mod+p workspace number 1
+#bindsym $mod+u workspace number 2
+#bindsym $mod+n workspace number 3
+#bindsym $mod+s workspace number 4
+#bindsym $mod+a workspace number 5
+#bindsym $mod+e workspace number 6
+#bindsym $mod+m workspace number 7
+#bindsym $mod+c workspace number 8
+#bindsym $mod+o workspace number 9
+
+set $ws1 "1:productivity"
+set $ws2 "2:university"
+set $ws3 "3:neovim"
+set $ws4 "4:search"
+set $ws5 "5:ai"
+set $ws6 "6:media"
+set $ws7 "7:explore"
+set $ws8 "8:config"
+set $ws9 "9:misc"
+
+## Set Workspace by name:
+bindsym $mod+p workspace $ws1
+bindsym $mod+u workspace $ws2
+bindsym $mod+n workspace $ws3
+bindsym $mod+s workspace $ws4
+bindsym $mod+i workspace $ws5
+bindsym $mod+m workspace $ws6
+bindsym $mod+e workspace $ws7
+bindsym $mod+c workspace $ws8
+bindsym $mod+o workspace $ws9
+
+## Switch to previous workspace
+#bindsym $mod+u workspace prev
+#bindsym $mod+i workspace next
+
+# Move focused container to workspace
+#bindsym $mod+Shift+1 move container to workspace number 1
+#bindsym $mod+Shift+2 move container to workspace number 2
+#bindsym $mod+Shift+3 move container to workspace number 3
+#bindsym $mod+Shift+4 move container to workspace number 4
+#bindsym $mod+Shift+5 move container to workspace number 5
+#bindsym $mod+Shift+6 move container to workspace number 6
+#bindsym $mod+Shift+7 move container to workspace number 7
+#bindsym $mod+Shift+8 move container to workspace number 8
+#bindsym $mod+Shift+9 move container to workspace number 9
+#bindsym $mod+Shift+0 move container to workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+p move container to workspace $ws1
+bindsym $mod+Shift+u move container to workspace $ws2
+bindsym $mod+Shift+n move container to workspace $ws3
+bindsym $mod+Shift+b move container to workspace $ws4
+bindsym $mod+Shift+i move container to workspace $ws5
+bindsym $mod+Shift+m move container to workspace $ws6
+bindsym $mod+Shift+e move container to workspace $ws7
+bindsym $mod+Shift+c move container to workspace $ws8
+bindsym $mod+Shift+o move container to workspace $ws9
+
+# Resizing containers:
+mode "resize" {
+bindsym $left resize shrink width 10px
+bindsym $down resize grow height 10px
+bindsym $up resize shrink height 10px
+bindsym $right resize grow width 10px
+# Ditto, with arrow keys
+bindsym Left resize shrink width 10px
+bindsym Down resize grow height 10px
+bindsym Up resize shrink height 10px
+bindsym Right resize grow width 10px
+
+# Return to default mode
+bindsym Return mode "default"
+bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+### Lock Screen
+#bindsym --release $mod+Control+l exec '$HOME/.config/sway/scripts/lock.sh'
+bindsym --release $mod+Control+l exec sway-lock
+
+#############################################
+#              LOOK & FEEL
+#############################################
+output * bg $HOME/.config/background fill
+
+# Colors (Blur Titlebar)
+#client.focused          #4c7899 #285577E0 #ffffff #2e9ef4
+#client.focused_inactive #333333 #5f676aE0 #ffffff #484e50
+#client.unfocused        #333333 #222222E0 #888888 #292d2e
+#client.urgent           #2f343a #900000E0 #ffffff #900000
+
+# Colors
+client.focused          #4c7899 #285577 #ffffff #2e9ef4
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused        #333333 #222222 #888888 #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
+
+
+
+## Gaps
+gaps inner 5
+gaps outer 10
+
+#############################################
+#              WINDOW RULES
+#############################################
+
+## Assign apps to Workspaces
+assign [class="ticktick"] $ws1
+assign [app_id="zen"] $ws4
+assign [class="electron-deepseek"] $ws5
+assign [app_id="chat-gpt"] $ws5
+assign [app_id="thunar"] $ws7
+
+#for_window [app_id="firefox"] title_format "Firefox"
+#for_window [app_id="LibreWolf"] title_format "%app_id"
+for_window [app_id="zen"] title_format "Zen"
+
+#for_window [app_id="zen"] move to workspace 4, focus
+#for_window [class="Notesnook"] move to workspace 1, focus
+#for_window [app_id="chat-gpt"] move to workspace 5, focus
+#for_window [class="electron-deepseek"] move to workspace 5
+
+############################################
+#		Panel Setup
+############################################
+
+bar {
+    swaybar_command waybar
+}
+
+############################################
+#          Idle Setup
+############################################
+### Idle configuration
+exec swayidle -w \
+          timeout 240 '$HOME/.config/sway/scripts/lock.sh' \
+          before-sleep '$HOME/.config/sway/scripts/lock.sh'
+
+#############################################
+#		Includes
+#############################################
+include /etc/sway/config.d/*

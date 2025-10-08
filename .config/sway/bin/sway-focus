@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+#
+# sway-focus: Focus an existing app in Sway, or launch it if not running
+#
+# How it works:
+# 1. Takes an identifier:
+#      - Wayland apps use "app_id".
+#      - XWayland apps use "class".
+# 2. Tries to focus a window with that app_id or class.
+# 3. If no such window is found, it runs the given command.
+# 4. If no command is given, it assumes the identifier is also the command.
+#
+# Examples:
+#   sway-focus firefox
+#     → Focus Firefox if running (app_id=firefox), otherwise start it.
+#
+#   sway-focus alacritty
+#     → Focus Alacritty if running (app_id=alacritty), otherwise start it.
+#
+#   sway-focus telegram-desktop telegram
+#     → Focus Telegram (XWayland class), otherwise run "telegram".
+#
+# Requirements: swaymsg, jq
+#
+
+msg="swaymsg"
+verbose="-q"
+
+usage() {
+    echo "Usage: sway-focus [options] identifier [runstring]"
+    echo
+    echo "Focus an app by app_id (Wayland) or class (XWayland)."
+    echo "If not found, run 'runstring'."
+    echo "If runstring is omitted, uses identifier as the run command."
+    echo
+    echo "Options:"
+    echo "  -v, --verbose   print debug info"
+    exit 0
+}
+
+TEMP=$(getopt --options hv --longoptions help,verbose -- "$@") || exit 1
+eval set -- "$TEMP"
+
+for i in "$@"; do
+    case "$i" in
+        -h|--help) usage ;;
+        -v|--verbose) verbose=""; shift ;;
+    esac
+done
+
+shift
+target="$1"; shift
+runstring="$*"
+
+[[ -z "$target" ]] && usage
+[[ -z "$runstring" ]] && runstring="$target"
+
+# Try Wayland app_id first
+$msg $verbose "[app_id=\"$target\"] focus" &>/dev/null || {
+    # If that fails, try XWayland class
+    $msg $verbose "[class=\"$target\"] focus" &>/dev/null || {
+        # If both fail, run the command
+        $msg $verbose exec "$runstring"
+    }
+}
+
