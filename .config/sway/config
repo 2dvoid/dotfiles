@@ -18,7 +18,7 @@ set $menu wmenu-run
 
 
 #############################################
-#              AUTOSTART
+#              Exec
 #############################################
 #exec swaync
 ## Cliboard Manager (Cliphist)
@@ -26,10 +26,7 @@ set $menu wmenu-run
 #exec wl-paste --watch cliphist store
 # wl-clip-persist
 exec wl-clip-persist --clipboard regular
-exec chat-gpt
-exec zen-browser
-exec thunar
-exec ticktick
+exec --no-startup-id QT_QPA_PLATFORM=xcb kdeconnectd
 
 #############################################
 #              INPUT DEVICES
@@ -250,6 +247,9 @@ bindsym $mod+r mode "resize"
 #bindsym --release $mod+Control+l exec '$HOME/.config/sway/scripts/lock.sh'
 bindsym --release $mod+Control+l exec sway-lock
 
+## Send URL to Phone through KDE Connect
+bindsym $mod+Prior exec --no-startup-id send-url
+
 #############################################
 #              LOOK & FEEL
 #############################################
@@ -288,8 +288,8 @@ assign [app_id="thunar"] $ws7
 #for_window [app_id="LibreWolf"] title_format "%app_id"
 for_window [app_id="zen"] title_format "Zen"
 
+for_window [class="Notesnook"] move to workspace $ws1, focus
 #for_window [app_id="zen"] move to workspace 4, focus
-#for_window [class="Notesnook"] move to workspace 1, focus
 #for_window [app_id="chat-gpt"] move to workspace 5, focus
 #for_window [class="electron-deepseek"] move to workspace 5
 
@@ -313,3 +313,13 @@ exec swayidle -w \
 #		Includes
 #############################################
 include /etc/sway/config.d/*
+
+
+#############################################
+#		       Autostart
+#############################################
+# Autostart apps that are non dependent to Network here.
+# Network depended apps are started with Systemd User unit (sway-apps.service)
+#exec dex --autostart --environment sway
+# Autostart Apps with the wrapper script at $HOME/.config/sway/scripts/autostart.sh
+exec $HOME/.config/sway/scripts/autostart.sh

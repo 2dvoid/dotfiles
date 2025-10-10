@@ -1,0 +1,29 @@
+#!/bin/bash
+# Send URL through KDE Connect
+
+url="$1"
+
+# if no arg, grab clipboard
+if [ -z "$url" ]; then
+    if command -v wl-paste >/dev/null 2>&1; then
+        url=$(wl-paste)
+    elif command -v xclip >/dev/null 2>&1; then
+        url=$(xclip -o -selection clipboard)
+    elif command -v xsel >/dev/null 2>&1; then
+        url=$(xsel -o -b)
+    else
+        echo "No clipboard tool (wl-paste/xclip/xsel) found." >&2
+        exit 1
+    fi
+fi
+
+# Get DEVICE_ID by running this command: "kdeconnect-cli -l"
+device_id=de475d529c1342d5b510be0926671292
+
+if [ -z "$device_id" ]; then
+    echo "No reachable KDE Connect device found." >&2
+    exit 1
+fi
+
+kdeconnect-cli --device "$device_id" --share "$url"
+notify-send "📱 Sent URL to phone" "$url"
