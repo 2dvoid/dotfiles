@@ -1,6 +1,9 @@
 #!/bin/bash
 # Send URL through KDE Connect
 
+# Get DEVICE_ID by running this command: "kdeconnect-cli -l"
+device_id=de475d529c1342d5b510be0926671292
+
 url="$1"
 
 # if no arg, grab clipboard
@@ -16,9 +19,6 @@ if [ -z "$url" ]; then
         exit 1
     fi
 fi
-
-# Get DEVICE_ID by running this command: "kdeconnect-cli -l"
-device_id=de475d529c1342d5b510be0926671292
 
 if [ -z "$device_id" ]; then
     echo "No reachable KDE Connect device found." >&2

@@ -248,7 +248,7 @@ bindsym $mod+r mode "resize"
 bindsym --release $mod+Control+l exec sway-lock
 
 ## Send URL to Phone through KDE Connect
-bindsym $mod+Prior exec --no-startup-id send-url
+##bindsym $mod+Prior exec --no-startup-id send-url
 
 #############################################
 #              LOOK & FEEL

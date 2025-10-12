@@ -3,5 +3,5 @@
   "lazy.nvim": { "branch": "main", "commit": "1ea3c4085785f460fb0e46d2fe1ee895f5f9e7c1" },
   "no-neck-pain.nvim": { "branch": "main", "commit": "c3d96b648501554c9a87530b2ff86c721cddd5c1" },
   "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
-  "tokyonight.nvim": { "branch": "main", "commit": "00d92e6009671493fceeb0e4baf644f5b983e6e4" }
+  "tokyonight.nvim": { "branch": "main", "commit": "d14614cbfc63b6037bfccd48bb982d2ad2003352" }
 }

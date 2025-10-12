@@ -1,0 +1,39 @@
+" === Minimal Tridactyl Config ===
+
+" Scroll faster
+bind j scrollpage 0.3
+bind k scrollpage -0.3
+
+" Link hint characters (customize if you like)
+"set hintchars asdfghjkl
+
+" Smooth scroll
+set smoothscroll true
+
+" Use Ctrl-i to edit text fields in Vim
+"bind <C-i> editTextField
+
+" Use `,` as leader key for custom mappings
+"bind ,o open
+"bind ,t tabopen
+
+" Disable Tridactyl temporarily (insert mode)
+"bind <C-z> mode ignore
+
+" === Tab Navigation Shortcuts ===
+bind J tabnext
+bind K tabprev
+
+
+" === Minimal send-url / mpv setup ===
+
+alias send_current_url composite get_current_url | shellescape | exclaim_quiet send-url
+alias send_hint_url    composite hint -pipe a href | shellescape | exclaim_quiet send-url
+
+alias mpv_current      composite get_current_url | shellescape | exclaim_quiet mpv --no-terminal --player-operation-mode=pseudo-gui
+alias mpv_hint         composite hint -pipe a href | shellescape | exclaim_quiet mpv --no-terminal --player-operation-mode=pseudo-gui
+
+bind ;u send_current_url
+bind ;U send_hint_url
+"bind ;m mpv_current
+"bind ;M mpv_hint
