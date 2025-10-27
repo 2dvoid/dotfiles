@@ -217,7 +217,7 @@ bindsym $mod+o workspace $ws9
 bindsym $mod+Shift+p move container to workspace $ws1
 bindsym $mod+Shift+u move container to workspace $ws2
 bindsym $mod+Shift+n move container to workspace $ws3
-bindsym $mod+Shift+b move container to workspace $ws4
+bindsym $mod+Shift+s move container to workspace $ws4
 bindsym $mod+Shift+i move container to workspace $ws5
 bindsym $mod+Shift+m move container to workspace $ws6
 bindsym $mod+Shift+e move container to workspace $ws7
@@ -244,7 +244,6 @@ bindsym Escape mode "default"
 bindsym $mod+r mode "resize"
 
 ### Lock Screen
-#bindsym --release $mod+Control+l exec '$HOME/.config/sway/scripts/lock.sh'
 bindsym --release $mod+Control+l exec sway-lock
 
 ## Send URL to Phone through KDE Connect
@@ -306,8 +305,8 @@ bar {
 ############################################
 ### Idle configuration
 exec swayidle -w \
-          timeout 240 '$HOME/.config/sway/scripts/lock.sh' \
-          before-sleep '$HOME/.config/sway/scripts/lock.sh'
+          timeout 240 sway-lock \
+          before-sleep sway-lock
 
 #############################################
 #		Includes

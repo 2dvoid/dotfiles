@@ -10,14 +10,14 @@ WAIT_INTERVAL="${WAIT_INTERVAL:-2}" # seconds between ping attempts
 
 # Local (no-network) apps — start immediately
 LOCAL_APPS=(
-  "thunar"
+#  "thunar"
 )
 
 # Network-dependent apps — start only after ping success
 NET_APPS=(
-  "ticktick"
+# "ticktick"
   "zen-browser"
-  "chat-gpt"
+#  "chat-gpt"
 )
 # ------------------------------
 

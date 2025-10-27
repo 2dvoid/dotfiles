@@ -21,8 +21,10 @@ set smoothscroll true
 "bind <C-z> mode ignore
 
 " === Tab Navigation Shortcuts ===
-bind J tabnext
-bind K tabprev
+bind --mode=ignore <C-j> tabnext
+bind --mode=ignore <C-k> tabprev
+bind <C-d> tabclose
+bind --mode=ignore <C-d> tabclose
 
 
 " === Minimal send-url / mpv setup ===
@@ -37,3 +39,8 @@ bind ;u send_current_url
 bind ;U send_hint_url
 "bind ;m mpv_current
 "bind ;M mpv_hint
+
+" === Ignore List===
+" Youtube Watch page:
+autocmd DocStart ^https://www\.youtube\.com/watch mode ignore
+
