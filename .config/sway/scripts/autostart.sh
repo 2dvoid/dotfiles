@@ -17,7 +17,7 @@ LOCAL_APPS=(
 NET_APPS=(
 # "ticktick"
   "zen-browser"
-#  "chat-gpt"
+  "firefox"
 )
 # ------------------------------
 

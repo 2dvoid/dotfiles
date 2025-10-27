@@ -286,11 +286,10 @@ assign [app_id="thunar"] $ws7
 #for_window [app_id="firefox"] title_format "Firefox"
 #for_window [app_id="LibreWolf"] title_format "%app_id"
 for_window [app_id="zen"] title_format "Zen"
+for_window [app_id="firefox"] title_format "AI"
 
 for_window [class="Notesnook"] move to workspace $ws1, focus
-#for_window [app_id="zen"] move to workspace 4, focus
-#for_window [app_id="chat-gpt"] move to workspace 5, focus
-#for_window [class="electron-deepseek"] move to workspace 5
+for_window [app_id="firefox"] move to workspace $ws5
 
 ############################################
 #		Panel Setup
