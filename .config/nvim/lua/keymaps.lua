@@ -20,16 +20,16 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
 
 -- Yanking to Clipboard
--- keymap("n", "<leader>y", '"+y', { desc = "Yank to clipboard" })
--- keymap("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
--- keymap("n", "<leader>yy", '"+yy', { desc = "Yank line to clipboard" })
--- keymap("v", "<leader>yy", '"+yy', { desc = "Yank line to clipboard" })
+keymap("n", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+keymap("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+keymap("n", "<leader>yy", '"+yy', { desc = "Yank line to clipboard" })
+keymap("v", "<leader>yy", '"+yy', { desc = "Yank line to clipboard" })
 
 -- Pasting from Clipboard
--- keymap("n", "<leader>p", '"+p', { desc = "Paste after from clipboard" })
--- keymap("n", "<leader>P", '"+P', { desc = "Paste before from clipboard" })
--- keymap("v", "<leader>p", '"+p', { desc = "Paste after from clipboard" })
--- keymap("v", "<leader>P", '"+P', { desc = "Paste before from clipboard" })
+keymap("n", "<leader>p", '"+p', { desc = "Paste after from clipboard" })
+keymap("n", "<leader>P", '"+P', { desc = "Paste before from clipboard" })
+keymap("v", "<leader>p", '"+p', { desc = "Paste after from clipboard" })
+keymap("v", "<leader>P", '"+P', { desc = "Paste before from clipboard" })
 
 -- Better yank/paste
 -- keymap("n", "Y", "y$", { desc = "Yank to end of line" })

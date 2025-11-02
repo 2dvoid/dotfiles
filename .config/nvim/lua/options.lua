@@ -37,6 +37,9 @@ opt.wrap = false
 -- Faster escape timeout
 vim.opt.timeoutlen = 200
 
+-- Access System Clipboard
+opt.clipboard = "unnamedplus"
+
 
 -------------Colorscheme------------------
 
