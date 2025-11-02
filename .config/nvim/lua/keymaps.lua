@@ -6,8 +6,14 @@ vim.g.mapleader = " "
 keymap("n", "<Space>", "<Nop>", { silent = true })
 
 -- Basic commands
-keymap("n", "<leader>q", ":q<CR>", { desc = "Quit" })
-keymap("n", "<leader>w", ":w<CR>", { desc = "Save" })
+--keymap("n", "<leader>q", ":q<CR>", { desc = "Quit" })
+--keymap("n", "<leader>w", ":w<CR>", { desc = "Save" })
+--
+keymap("n", "<C-s>", ":w<CR>", { desc = "Write (Save) file" })
+keymap("i", "<C-s>", "<ESC>:w<CR>a", { desc = "Write (Save) file" })
+
+keymap("n", "<C-q>", ":q<CR>", { desc = "Write and Quit" })
+--keymap("i", "<C-q>", "<ESC>:wq<CR>", { desc = "Write and Quit" })
 
 -- Window split
 -- keymap("n", "<leader>h", ":split<CR>", { desc = "Horizontal split" })

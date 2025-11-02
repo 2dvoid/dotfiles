@@ -152,6 +152,22 @@ bindsym --locked --no-repeat $mod+Control+right exec playerctl next
 bindsym --locked --no-repeat XF86AudioPrev exec playerctl previous
 bindsym --locked --no-repeat $mod+Control+left exec playerctl previous
 
+    
+## Screenshot:
+# ----- Screenshot Bindings (using grimshot) -----
+
+# 1. Copy a selected area to the clipboard
+bindsym $mod+backslash exec "grimshot --notify copy area"
+
+# 2. Save a selected area to a file
+bindsym $mod+ctrl+backslash exec "grimshot --notify save area"
+
+# 3. Save the current screen (output) to a file
+#bindsym Shift+backslash exec grimshot save screen
+
+# 4. Save the currently focused window to a file
+#bindsym $mod+Shift+backslash exec grimshot save window
+
 ################################## Workspaces #################################################
 
 # Switch to workspace
@@ -178,7 +194,7 @@ bindsym --locked --no-repeat $mod+Control+left exec playerctl previous
 
 set $ws1 "1:productivity"
 set $ws2 "2:university"
-set $ws3 "3:neovim"
+set $ws3 "3:editor"
 set $ws4 "4:search"
 set $ws5 "5:ai"
 set $ws6 "6:media"
@@ -278,6 +294,7 @@ gaps outer 10
 
 ## Assign apps to Workspaces
 assign [class="ticktick"] $ws1
+assign [app_id="neovide"] $ws3
 assign [app_id="zen"] $ws4
 assign [class="electron-deepseek"] $ws5
 assign [app_id="chat-gpt"] $ws5
