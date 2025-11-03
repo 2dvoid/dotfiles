@@ -5,7 +5,10 @@ local opt = vim.opt
 opt.wildmenu = true
 
 -- Show commands
-opt.showcmd = true
+opt.showcmd = flase
+
+-- Disable the ruler
+opt.ruler = false
 
 -- Case insensitive search (unless capital letters are used)
 opt.ignorecase = true
@@ -35,11 +38,10 @@ opt.termguicolors = true
 opt.wrap = false
 
 -- Faster escape timeout
-vim.opt.timeoutlen = 200
+vim.opt.timeoutlen = 300
 
 -- Access System Clipboard
 opt.clipboard = "unnamedplus"
-
 
 -------------Colorscheme------------------
 

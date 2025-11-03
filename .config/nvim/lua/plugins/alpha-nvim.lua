@@ -2,6 +2,7 @@ return {
 	"goolord/alpha-nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		"mikavilpas/yazi.nvim",
 	},
 
 	config = function()
@@ -24,6 +25,14 @@ return {
 			[[                                                                       ]],
 			[[                                                                       ]],
 			[[                                                                       ]],
+		}
+		---
+		---  👇 THIS IS THE NEW, SAFE VERSION 👇
+		dashboard.section.buttons.val = {
+			-- dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
+			dashboard.button("b", "  Browse files", ":Yazi<CR>"),
+			dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
+			dashboard.button("q", "󰈆  Exit", ":q<CR>"),
 		}
 
 		alpha.setup(dashboard.opts)

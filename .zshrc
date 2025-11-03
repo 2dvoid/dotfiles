@@ -2,3 +2,14 @@
 
 # Stop Terminal Freezing on ctrl+s
 stty -ixon
+
+# Set default editor based on the environment
+if [ -n "$SWAYSOCK" ]; then
+    # We are in Sway, so use the graphical editor
+    export VISUAL='neovide'
+    export EDITOR='neovide'
+else
+    # We are in a TTY or other environment, use the terminal editor
+    export VISUAL='nvim'
+    export EDITOR='nvim'
+fi
