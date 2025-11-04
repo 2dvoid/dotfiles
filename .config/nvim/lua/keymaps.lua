@@ -52,7 +52,3 @@ local funcs = require("myFunctions")
 -- Code Runner
 -- Toggle with Leader+r
 keymap("n", "<leader>r", funcs.codeRunner, { noremap = true, silent = true })
-
--- No Neck Pain
--- Toggle Center Layout with Leader+c
-vim.keymap.set("n", "<leader>c", "<cmd>NoNeckPain<CR>", { desc = "Toggle Center Layout" })

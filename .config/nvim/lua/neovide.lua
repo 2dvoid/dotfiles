@@ -26,8 +26,8 @@ vim.g.neovide_cursor_animation_length = 0.1
 --vim.g.neovide_cursor_vfx_mode = "railgun" -- Try "railgun", "torpedo", "pixiedust"
 
 -- Transparency & Blur
---vim.g.neovide_normal_opacity = 0.95
---vim.g.neovide_window_blurred = true
+vim.g.neovide_normal_opacity = 0.95
+vim.g.neovide_window_blurred = true
 
 -- Theme
 vim.g.neovide_theme = "dark"
