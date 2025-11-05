@@ -30,8 +30,9 @@ return {
 		---  👇 THIS IS THE NEW, SAFE VERSION 👇
 		dashboard.section.buttons.val = {
 			-- dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-			dashboard.button("b", "  Browse files", ":Yazi<CR>"),
-			dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
+			dashboard.button("Space f r", "  Recent files", ":Telescope oldfiles<CR>"),
+			dashboard.button("Space f f", "  Find files", ":Telescope find_files<CR>"),
+			dashboard.button("Space e", "  Browse files", ":Yazi<CR>"),
 			dashboard.button("q", "󰈆  Exit", ":q<CR>"),
 		}
 

@@ -297,7 +297,7 @@ assign [class="ticktick"] $ws1
 assign [app_id="neovide"] $ws3
 assign [app_id="zen"] $ws4
 assign [class="electron-deepseek"] $ws5
-assign [app_id="chat-gpt"] $ws5
+assign [app_id="firefox"] $ws5
 assign [app_id="thunar"] $ws7
 
 #for_window [app_id="firefox"] title_format "Firefox"
@@ -306,7 +306,8 @@ for_window [app_id="zen"] title_format "Zen"
 for_window [app_id="firefox"] title_format "AI"
 
 for_window [class="Notesnook"] move to workspace $ws1, focus
-for_window [app_id="firefox"] move to workspace $ws5, fullscreen enable
+for_window [app_id="firefox"] fullscreen enable
+for_window [app_id="neovide"] fullscreen enable
 
 ############################################
 #		Panel Setup
