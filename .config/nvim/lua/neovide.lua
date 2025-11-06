@@ -18,7 +18,7 @@ end
 --vim.opt.guifont = "JetBrainsMonoNL Nerd Font:h14"
 --
 -- IBM Plex Mono Nerd
-vim.opt.guifont = "BlexMono Nerd Font:h15"
+vim.opt.guifont = "BlexMono Nerd Font:h16"
 
 -- Animations
 vim.g.neovide_scroll_animation_length = 0.3

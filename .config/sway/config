@@ -13,7 +13,8 @@ set $right l
 
 set $HOME "$(echo $HOME)"
 set $term kitty
-set $menu wmenu-run
+set $drun wofi --show drun
+set $run wofi --show run
 #set $browser firefox
 
 
@@ -79,7 +80,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+Backspace kill
 
 # Start your launcher
-bindsym $mod+space exec $menu
+bindsym $mod+space exec $drun
+bindsym $mod+semicolon exec $run
 
 # File Manager: Yazi
 #bindsym $mod+e exec "$term -e yazi"
@@ -339,3 +341,4 @@ include /etc/sway/config.d/*
 #exec dex --autostart --environment sway
 # Autostart Apps with the wrapper script at $HOME/.config/sway/scripts/autostart.sh
 exec $HOME/.config/sway/scripts/autostart.sh
+exec $HOME/.config/sway/bin/warmlight

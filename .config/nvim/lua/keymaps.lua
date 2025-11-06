@@ -12,7 +12,7 @@ keymap("n", "<Space>", "<Nop>", { silent = true })
 keymap("n", "<C-s>", ":w<CR>", { desc = "Write (Save) file" })
 keymap("i", "<C-s>", "<ESC>:w<CR>a", { desc = "Write (Save) file" })
 
-keymap("n", "<C-q>", ":q<CR>", { desc = "Write and Quit" })
+keymap("n", "<C-q>", ":bd<CR>", { desc = "Buffer Delete" })
 --keymap("i", "<C-q>", "<ESC>:wq<CR>", { desc = "Write and Quit" })
 
 -- Window split

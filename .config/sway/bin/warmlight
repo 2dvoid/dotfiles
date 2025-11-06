@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if pgrep -x wlsunset >/dev/null; then
+    # wlsunset is running, so stop it
+    pkill wlsunset
+else
+    # wlsunset is not running, so start it
+    # This sets both day/night temp to 4000K
+    wlsunset &
+fi
