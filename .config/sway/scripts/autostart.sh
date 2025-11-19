@@ -11,7 +11,7 @@ WAIT_INTERVAL="${WAIT_INTERVAL:-2}" # seconds between ping attempts
 # Local (no-network) apps — start immediately
 LOCAL_APPS=(
     #  "thunar"
-    "neovide"
+    # "neovide"
 )
 
 # Network-dependent apps — start only after ping success

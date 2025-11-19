@@ -309,7 +309,7 @@ for_window [app_id="firefox"] title_format "AI"
 
 for_window [class="Notesnook"] move to workspace $ws1, focus
 for_window [app_id="firefox"] fullscreen enable
-for_window [app_id="neovide"] fullscreen enable
+# for_window [app_id="neovide"] fullscreen enable
 
 ############################################
 #		Panel Setup
