@@ -21,13 +21,11 @@ set $run wofi --show run
 #############################################
 #              Exec
 #############################################
-#exec swaync
-## Cliboard Manager (Cliphist)
-# Cliphist (For History)
-#exec wl-paste --watch cliphist store
-# wl-clip-persist
+## Authentication Agent(Gnome Polkit)
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+## Cliboard Manager (wl-clip-persist)
 exec wl-clip-persist --clipboard regular
-exec --no-startup-id QT_QPA_PLATFORM=xcb kdeconnectd
+# exec --no-startup-id QT_QPA_PLATFORM=xcb kdeconnectd
 
 #############################################
 #              INPUT DEVICES
@@ -298,7 +296,6 @@ gaps outer 10
 assign [class="ticktick"] $ws1
 assign [app_id="neovide"] $ws3
 assign [app_id="zen"] $ws4
-assign [class="electron-deepseek"] $ws5
 assign [app_id="firefox"] $ws5
 assign [app_id="thunar"] $ws7
 
@@ -307,7 +304,6 @@ assign [app_id="thunar"] $ws7
 for_window [app_id="zen"] title_format "Zen"
 for_window [app_id="firefox"] title_format "AI"
 
-for_window [class="Notesnook"] move to workspace $ws1, focus
 for_window [app_id="firefox"] fullscreen enable
 # for_window [app_id="neovide"] fullscreen enable
 
@@ -336,9 +332,6 @@ include /etc/sway/config.d/*
 #############################################
 #		       Autostart
 #############################################
-# Autostart apps that are non dependent to Network here.
-# Network depended apps are started with Systemd User unit (sway-apps.service)
-#exec dex --autostart --environment sway
 # Autostart Apps with the wrapper script at $HOME/.config/sway/scripts/autostart.sh
 exec $HOME/.config/sway/scripts/autostart.sh
 exec $HOME/.config/sway/bin/warmlight

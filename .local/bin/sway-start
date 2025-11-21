@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/bin/sway-start
+# shellcheck disable=SC2034
+TIME_STAMP="20250713.140811"
+
+# Copyright (C) 2020-2025 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+prog=$( basename "$0" )
+noapps=""
+sway_opts=""
+config="${XDG_CONFIG_DIR:-$HOME/.config}/sway/config"
+
+# process options:
+TEMP=$( getopt --options hndvc: --longoptions help,noapps,debug,verbose,config: -- "$@" ) || exit 1
+eval set -- "$TEMP"
+
+for i in "$@"; do
+    case $i in
+        -h|--help)
+            echo "Usage: $prog: start a sway session from a console tty"
+            echo "-n|--noapps          dont run apps"
+            echo "-c|--config <file>   use config from <file"
+            echo "-d|--debug           debug"
+            echo "-v|--verbose         verbose"
+            exit 0
+            ;;
+        -c|--config)
+            shift
+            config="$1"
+            shift
+            ;;
+        -n|--noapps)
+            noapps="set"
+            shift
+            ;;
+        -d|--debug)
+            sway_opts+=" --debug"
+            shift
+            ;;
+        -v|--verbose)
+            sway_opts+=" --verbose"
+            shift
+            ;;
+    esac
+done
+
+tty=$( tty )
+LOGFILE=.wsession-errors${tty////.}.$HOSTNAME
+exec 1> ~/"$LOGFILE" 2>&1
+echo "sway Starting: $( date )"
+set -x
+
+# Add Sway bin directory to PATH
+export PATH="$HOME/.config/sway/bin/:$PATH"
+
+# see: https://wiki.archlinux.org/title/Qt#Configuration_of_Qt_5_applications_under_environments_other_than_KDE_Plasma
+# https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
+# to be the same as GTK:
+export QT_STYLE_OVERRIDE=adwaita
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+export _JAVA_AWT_WM_NONREPARENTING=1
+# maybe:
+#export QT_QPA_PLATFORMTHEME=qt5ct
+# 'shotcut', 'pia-client' and 'mythfrontend' need this but not helpful elsewhere
+#export QT_QPA_PLATFORM=xcb
+
+export TERMINAL=kitty
+
+# GTK+ apps take 20s to start waiting for a portal:
+# https://github.com/swaywm/sway/issues/5732
+export GTK_USE_PORTAL=0
+
+export MOZ_ENABLE_WAYLAND=1
+
+# I doubt these are needed:
+export XDG_SESSION_TYPE=wayland
+
+#export XDG_PICTURES_DIR=$HOME/media/backgrounds
+
+# https://github.com/swaywm/sway/wiki/Running-programs-natively-under-wayland says to _not_ do this:
+#export GDK_BACKEND=wayland
+
+#XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+
+export XDG_SESSION_DESKTOP=sway
+#export XDG_CURRENT_DESKTOP=X-Generic
+# needed for emacs-everywhere:
+export XDG_CURRENT_DESKTOP=sway
+# for xdg-open - avoids running xprop which hangs if Xwayland is not running
+export DE=generic
+
+# to stop warnings like "dbind-WARNING **: ... Couldn't register with accessibility bus: Did not receive a reply."
+export NO_AT_BRIDGE=1
+
+# see https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
+[[ $( hostname ) == aloo ]] && export WLR_NO_HARDWARE_CURSORS=1
+
+[[ "$SSH_ASKPASS" ]] || export SSH_ASKPASS="gnome-ssh-askpass"
+
+# cleanup older sessions:
+rm "$HOME"/.cache/*.wob
+
+if test -z "${XDG_RUNTIME_DIR}"; then
+    export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir-$$
+    if ! test -d "${XDG_RUNTIME_DIR}"; then
+        mkdir -p "${XDG_RUNTIME_DIR}"
+        chmod 0700 "${XDG_RUNTIME_DIR}"
+    fi
+fi
+
+export SSH_AUTH_SOCK
+export GNOME_KEYRING_CONTROL
+# shellcheck disable=SC2046
+eval $( gnome-keyring-daemon --start )
+
+export SSH_ASKPASS=gnome-ssh-askpass
+
+# so that sway-start-apps picks it up:
+[[ "$noapps" ]] && touch "$HOME/noapps"
+
+case $( hostname ) in
+    naan)
+        export XCURSOR_SIZE=48
+        export XCURSOR_THEME=Adwaita
+        ;;
+esac
+
+# shellcheck disable=SC2086
+dbus-run-session -- sway --config "$config" $sway_opts
+
+# cleanup anything that remains from the session (protect daemons with
+# 'unset XDG_RUNTIME_DIR'):
+sleep 2
+me="$$"
+(
+    for pid in $( ps --user "$USER" -o pid ); do
+        [[ "$pid" == "$$" || "$pid" = "$me" ]] && continue
+        if tr '\0' '\n' < "/proc/$pid/environ" | grep -q "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR"; then
+            echo -n "killing: "
+            ps --pid "$pid" -o user,pid,ppid,pgid,start_time,cmd
+            ( kill "$pid"; sleep 2; kill -9 "$pid" ) &
+        fi
+    done
+)
+
+[[ -d "$XDG_RUNTIME_DIR" && "$XDG_RUNTIME_DIR" =~ /tmp/$UID-runtime-dir- ]] && rm -rf "$XDG_RUNTIME_DIR"
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+
