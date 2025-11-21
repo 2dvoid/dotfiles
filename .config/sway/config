@@ -23,6 +23,7 @@ set $run wofi --show run
 #############################################
 ## Authentication Agent(Gnome Polkit)
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gnome-keyring-daemon --start --components=secrets
 ## Cliboard Manager (wl-clip-persist)
 exec wl-clip-persist --clipboard regular
 # exec --no-startup-id QT_QPA_PLATFORM=xcb kdeconnectd

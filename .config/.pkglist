@@ -1,0 +1,30 @@
+## Pacman
+polkit-gnome
+gnome-keyring
+libsecret
+gvfs
+wofi
+kitty
+wl-clip-persist
+ttf-iosevka-nerd
+sway-contrib
+wlsunset
+pacman-contrib
+intellij-idea-community-edition
+maven
+bluetui
+mpv
+xdg-desktop-portal-gtk
+pika-backup
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-liberation
+ttf-jetbrains-mono-nerd
+
+## AUR:
+zen-browser
+
+## Remove These:
+gnu-free-fonts
+ttf-dejavu
