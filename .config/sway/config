@@ -27,6 +27,8 @@ exec gnome-keyring-daemon --start --components=secrets
 ## Cliboard Manager (wl-clip-persist)
 exec wl-clip-persist --clipboard regular
 # exec --no-startup-id QT_QPA_PLATFORM=xcb kdeconnectd
+# Start Pika Backup Monitor (required for scheduled backups)
+exec pika-backup-monitor
 
 #############################################
 #              INPUT DEVICES
@@ -289,8 +291,13 @@ client.urgent           #2f343a #900000 #ffffff #900000
 
 
 ## Gaps
-gaps inner 5
-gaps outer 10
+# gaps inner 5
+# gaps outer 30
+# workspace $ws5 gaps outer 30
+gaps horizontal 100
+gaps vertical 30
+# gaps inner 20
+
 
 #############################################
 #              WINDOW RULES

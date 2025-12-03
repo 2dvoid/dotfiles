@@ -6,5 +6,5 @@ if pgrep -x wlsunset >/dev/null; then
 else
     # wlsunset is not running, so start it
     # This sets both day/night temp to 4000K
-    wlsunset -T 4601 -t 4600
+    wlsunset -T 4201 -t 4200
 fi

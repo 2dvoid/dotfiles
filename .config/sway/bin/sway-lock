@@ -1,17 +1,15 @@
 #!/bin/bash
 
-swaymsg input type:pointer events disabled
-
 # If idle for 15s, power down the output
 swayidle -w \
-		timeout 15 'swaymsg "output * dpms off"' \
-		resume 'swaymsg "output * dpms on"' &
+		timeout 15 \
+        'swaymsg "output * dpms off" && swaymsg "input type:pointer events disabled"' \
+		resume \
+        'swaymsg "output * dpms on"; swaymsg "input type:pointer events enabled"' &
 
 
 # Lock screen immediately
 swaylock --image ~/.config/lockscreen
-
-swaymsg input type:pointer events enabled
-
+#
 # Kill the last instance of swayidle so the timer doesn't keep running in background
 pkill --newest swayidle
