@@ -46,4 +46,14 @@ function M.sayHello(name)
 end
 ----------------------------------------------------------------
 
+--------------------------Disable Auto Commenting Next Line------------
+-- specific event to remove formatoptions after filetype plugins have loaded
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'r', 'o' })
+  end,
+})
+----------------------------------------------------------------
+
 return M

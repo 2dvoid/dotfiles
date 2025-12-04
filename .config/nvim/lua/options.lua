@@ -22,10 +22,12 @@ opt.expandtab = true
 opt.smarttab = true
 opt.shiftwidth = 4
 opt.tabstop = 4
+opt.softtabstop = 4
 
 -- Indentation
 opt.autoindent = true
 opt.smartindent = true
+vim.cmd("filetype plugin indent on")
 
 -- Splits
 opt.splitbelow = true
