@@ -30,6 +30,12 @@ exec wl-clip-persist --clipboard regular
 # Start Pika Backup Monitor (required for scheduled backups)
 exec pika-backup-monitor
 
+## Fix Theming (Gemini Advice)
+# Import environment variables into the systemd user session
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# Update DBus (fixes apps not launching or launching slowly)
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
 #############################################
 #              INPUT DEVICES
 #############################################
@@ -49,11 +55,10 @@ seat * hide_cursor 3000
 #############################################
 #              OUTPUTS / MONITORS
 #############################################
-#output eDP-1 {
-#    resolution 1920x1080
-#    scale 1.0
+output HDMI-A-1 {
+    scale 1.2
 #    adaptive_sync on
-#}
+}
 
 #############################################
 #              GENERAL SETTINGS

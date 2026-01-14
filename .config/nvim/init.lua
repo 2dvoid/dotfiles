@@ -1,14 +1,8 @@
--- Neovim Options
-require("options")
+-- Options
+require("config.options")
 
--- Neovim Keybindings
-require("keymaps")
-
--- Neovide GUI Settings
-require("neovide")
+-- Keybindings
+require("config.keymaps")
 
 -- Package Manager
 require("config.lazy")
-
--- Color Scheme
-require("colorscheme")

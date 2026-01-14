@@ -1,3 +1,6 @@
+-- Don't put any plugin related keymaps here.
+-- Only core keymaps should live in here.
+--
 -- Shorthand variable for vim.keymap.set
 local keymap = vim.keymap.set
 
@@ -6,18 +9,10 @@ vim.g.mapleader = " "
 keymap("n", "<Space>", "<Nop>", { silent = true })
 
 -- Basic commands
---keymap("n", "<leader>q", ":q<CR>", { desc = "Quit" })
---keymap("n", "<leader>w", ":w<CR>", { desc = "Save" })
---
-keymap("n", "<C-s>", ":w<CR>", { desc = "Write (Save) file" })
+keymap("n", "<leader>s", ":w<CR>", { desc = "Write (Save) file" })
 keymap("i", "<C-s>", "<ESC>:w<CR>a", { desc = "Write (Save) file" })
 
-keymap("n", "<C-q>", ":bd<CR>", { desc = "Buffer Delete" })
---keymap("i", "<C-q>", "<ESC>:wq<CR>", { desc = "Write and Quit" })
-
--- Window split
--- keymap("n", "<leader>h", ":split<CR>", { desc = "Horizontal split" })
--- keymap("n", "<leader>v", ":vsplit<CR>", { desc = "Vertical split" })
+keymap("n", "<leader>q", ":bd<CR>", { desc = "Buffer Delete" })
 
 -- Navigate splits with Ctrl + h/j/k/l
 vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true })
@@ -44,11 +39,3 @@ keymap("v", "<leader>P", '"+P', { desc = "Paste before from clipboard" })
 
 -- Escape by pressing 'jk'
 -- keymap("i", "jk", "<Esc>", { desc = "Exit insert mode" })
-
----------------------- Custom Functions: -------------------------
-
-local funcs = require("myFunctions")
-
--- Code Runner
--- Toggle with Leader+r
-keymap("n", "<leader>r", funcs.codeRunner, { noremap = true, silent = true })

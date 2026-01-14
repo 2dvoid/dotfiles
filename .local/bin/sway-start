@@ -65,16 +65,17 @@ set -x
 
 # Add Sway bin directory to PATH
 export PATH="$HOME/.config/sway/bin/:$PATH"
+# Ruby Dev Setup
+export PATH="$HOME/.rbenv/shims:$PATH"
 
 # see: https://wiki.archlinux.org/title/Qt#Configuration_of_Qt_5_applications_under_environments_other_than_KDE_Plasma
 # https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
 # to be the same as GTK:
 export QT_STYLE_OVERRIDE=adwaita
-export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORM=wayland;xcb
 export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 export _JAVA_AWT_WM_NONREPARENTING=1
-# maybe:
-#export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct
 # 'shotcut', 'pia-client' and 'mythfrontend' need this but not helpful elsewhere
 #export QT_QPA_PLATFORM=xcb
 
@@ -92,12 +93,12 @@ export XDG_SESSION_TYPE=wayland
 #export XDG_PICTURES_DIR=$HOME/media/backgrounds
 
 # https://github.com/swaywm/sway/wiki/Running-programs-natively-under-wayland says to _not_ do this:
-#export GDK_BACKEND=wayland
+export GDK_BACKEND=wayland
 
 #XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
 
 export XDG_SESSION_DESKTOP=sway
-#export XDG_CURRENT_DESKTOP=X-Generic
+export XDG_CURRENT_DESKTOP=sway
 # needed for emacs-everywhere:
 export XDG_CURRENT_DESKTOP=sway
 # for xdg-open - avoids running xprop which hangs if Xwayland is not running

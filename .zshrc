@@ -1,5 +1,8 @@
 # Created by newuser for 5.9
 
+## Setup Ruby Dev Environment
+eval "$(rbenv init -)"
+
 # Stop Terminal Freezing on ctrl+s
 stty -ixon
 

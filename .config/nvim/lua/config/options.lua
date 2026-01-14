@@ -1,3 +1,5 @@
+-- Core Options. No plugin related stuffs.
+--
 -- Set a shorthand variable for vim.opt
 local opt = vim.opt
 
@@ -40,21 +42,7 @@ opt.termguicolors = true
 opt.wrap = false
 
 -- Faster escape timeout
-vim.opt.timeoutlen = 300
+--vim.opt.timeoutlen = 300
 
 -- Access System Clipboard
 opt.clipboard = "unnamedplus"
-
--------------Colorscheme------------------
-
--- Set Tokyonight style: "storm", "night", "day", "moon"
---vim.g.tokyonight_style = "night"
-
--- Optional: make comments italic
---vim.g.tokyonight_italic_comments = true
-
--- Optional: transparent background
---vim.g.tokyonight_transparent = true
-
--- Apply the colorscheme
---vim.cmd[[colorscheme tokyonight-night]]
