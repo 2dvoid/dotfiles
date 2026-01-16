@@ -3,7 +3,7 @@ return {
   
   -- ADDED: This defines the keybind specifically for this plugin
   keys = {
-    { "<leader>r", "<cmd>RunCode<CR>", desc = "Run Code" },
+    {"<leader>r", "<cmd>w<CR><cmd>RunCode<CR>", desc = "Save & Run"},
   },
 
   config = function()
