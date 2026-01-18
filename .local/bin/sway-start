@@ -140,6 +140,12 @@ case $( hostname ) in
         ;;
 esac
 
+### Generate colors using wallust
+WALLPAPER="$HOME/.config/background"
+if command -v wallust &> /dev/null; then
+    wallust run -q "$WALLPAPER"
+fi
+
 # shellcheck disable=SC2086
 dbus-run-session -- sway --config "$config" $sway_opts
 

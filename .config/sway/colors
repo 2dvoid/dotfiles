@@ -1,0 +1,28 @@
+# Define variables using wallust colors
+set $background #0F0F11
+set $foreground #EFDDD4
+set $cursor #F2707F
+
+set $color0  #3A3A3C
+set $color1  #5E6A5F
+set $color2  #C73C52
+set $color3  #CD3A51
+set $color4  #997566
+set $color5  #9A7463
+set $color6  #9C7663
+set $color7  #DFC5B9
+set $color8  #9C8A81
+set $color9  #6A7A6B
+set $color10 #F61134
+set $color11 #FD0128
+set $color12 #C5937D
+set $color13 #CD9B85
+set $color14 #D09D84
+set $color15 #DFC5B9
+
+# Define class colors
+# class                 border   bg       text     indicator  child_border
+client.focused          $color4  $color4  $background $color4   $color4
+client.focused_inactive $color8  $color8  $foreground $color8   $color8
+client.unfocused        $color0  $color0  $foreground $color0   $color0
+client.urgent           $color9  $color9  $background $color9   $color9

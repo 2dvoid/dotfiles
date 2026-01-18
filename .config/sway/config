@@ -36,6 +36,10 @@ exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 # Update DBus (fixes apps not launching or launching slowly)
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
+## Generate Colors from wallpaper
+set $wallpaper ~/path/to/my-wallpaper.jpg
+exec_always wallust run -q $wallpaper
+
 #############################################
 #              INPUT DEVICES
 #############################################
@@ -280,6 +284,7 @@ bindsym --release $mod+Control+l exec sway-lock
 #              LOOK & FEEL
 #############################################
 output * bg $HOME/.config/background fill
+include $HOME/.config/sway/colors
 
 # Colors (Blur Titlebar)
 #client.focused          #4c7899 #285577E0 #ffffff #2e9ef4
@@ -287,11 +292,11 @@ output * bg $HOME/.config/background fill
 #client.unfocused        #333333 #222222E0 #888888 #292d2e
 #client.urgent           #2f343a #900000E0 #ffffff #900000
 
-# Colors
-client.focused          #4c7899 #285577 #ffffff #2e9ef4
-client.focused_inactive #333333 #5f676a #ffffff #484e50
-client.unfocused        #333333 #222222 #888888 #292d2e
-client.urgent           #2f343a #900000 #ffffff #900000
+# # Colors
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4
+# client.focused_inactive #333333 #5f676a #ffffff #484e50
+# client.unfocused        #333333 #222222 #888888 #292d2e
+# client.urgent           #2f343a #900000 #ffffff #900000
 
 
 
