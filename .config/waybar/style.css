@@ -2,15 +2,13 @@
 @import url("colors.css");
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: "JetBrainsMono Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
+    min-height: 0;
 }
 
 window#waybar {
-    /* Use theme background with opacity */
-    background-color: shade(@background, 0.9);
-    border-bottom: 3px solid @color0;
+    background-color: rgba(0, 0, 0, 0); 
     color: @foreground;
     transition-property: background-color;
     transition-duration: .5s;
@@ -20,58 +18,7 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-window#waybar.termite {
-    background-color: @color0;
-}
-
-window#waybar.chromium {
-    background-color: @background;
-    border: none;
-}
-
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px @foreground;
-}
-
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: @color3;
-}
-
-#workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: @foreground;
-}
-
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#workspaces button.focused {
-    background-color: @color0;
-    box-shadow: inset 0 -3px @foreground;
-}
-
-#workspaces button.urgent {
-    background-color: @color9; /* Urgent/Red-ish */
-}
-
-#mode {
-    background-color: @color0;
-    box-shadow: inset 0 -3px @foreground;
-}
-
+/* --- Common Module Styling --- */
 #clock,
 #battery,
 #cpu,
@@ -80,163 +27,124 @@ button:hover {
 #temperature,
 #backlight,
 #network,
+#bluetooth,
 #pulseaudio,
 #wireplumber,
 #custom-media,
 #tray,
 #mode,
 #idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#mpd {
-    padding: 0 10px;
+#mpd,
+#custom-launcher,
+#workspaces button {
+    background-color: @background; /* Uses your terminal background color */
     color: @foreground;
+    padding: 4px 12px;
+    margin: 4px 3px; /* Adds breathing room between modules */
+    border-radius: 6px; /* Softens the edges */
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Subtle depth */
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
+/* --- Workspaces --- */
+#workspaces button {
+    padding: 0 8px;
+    background-color: @background;
+    color: @color8; /* Dimmed color for inactive workspaces */
+    box-shadow: none;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
-    background-color: @color0;
+#workspaces button:hover {
+    background: @color0;
     color: @foreground;
+    box-shadow: none;
+}
+
+#workspaces button.focused {
+
+    background-color: @color4; /* Use an accent color (Blue-ish) for the background */
+    color: @background;        /* Dark text to ensure readability */
+    box-shadow: none;
+    /*min-width: 30px;            Keep it slightly wider */
+    /*transition: all 0.3s ease;  Smooth transition when switching */
+}
+
+#workspaces button.urgent {
+    color: @color9; 
+}
+
+/* --- Specific Module Colors (Text/Icon Only) --- */
+
+#cpu {
+    color: @color10; 
+}
+
+#memory {
+    color: @color13;
+}
+
+#disk {
+    color: @color5;
+}
+
+#temperature {
+    color: @color12;
+}
+
+#wireplumber {
+    color: @color4;
+}
+
+#network {
+    color: @color4;
+}
+
+#bluetooth {
+    color: @color4;
+}
+
+#idle_inhibitor {
+    color: @color4;
+}
+
+#network.disconnected {
+    color: @color9;
+}
+
+#pulseaudio {
+    color: @color3;
+}
+
+#pulseaudio.muted {
+    color: @color8;
 }
 
 #battery {
-    background-color: @foreground;
-    color: @background;
+    color: @color2;
 }
 
-#battery.charging, #battery.plugged {
-    color: @foreground;
-    background-color: @color2; /* Green-ish usually */
-}
-
-@keyframes blink {
-    to {
-        background-color: @foreground;
-        color: @background;
-    }
-}
-
-/* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: @color9; /* Critical/Red */
-    color: @foreground;
+    background-color: @color9;
+    color: @background;
     animation-name: blink;
     animation-duration: 0.5s;
-    animation-timing-function: steps(12);
+    animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
-#power-profiles-daemon {
-    padding-right: 15px;
+/* --- Clock --- */
+#clock {
+    color: @color4;
+    font-weight: bold;
+    margin-right: 8px; /* Extra spacing on the far right */
 }
 
-#power-profiles-daemon.performance {
-    background-color: @color9;
-    color: @foreground;
-}
-
-#power-profiles-daemon.balanced {
-    background-color: @color4;
-    color: @foreground;
-}
-
-#power-profiles-daemon.power-saver {
-    background-color: @color2;
-    color: @background;
-}
-
-label:focus {
-    background-color: @background;
-}
-
-#cpu {
-    background-color: @color10; /* Blue-ish */
-    color: @background;
-}
-
-#memory {
-    background-color: @color13; /* Purple-ish */
-    color: @background;
-}
-
-#disk {
-    background-color: @color5; /* Brown/Orange-ish */
-    color: @background;
-}
-
-#backlight {
-    background-color: @color11; /* Cyan-ish */
-    color: @background;
-}
-
-#network {
-    background-color: @color4; /* Blue-ish */
-    color: @background;
-}
-
-#network.disconnected {
-    background-color: @color9; /* Red */
-}
-
-#pulseaudio {
-    background-color: @color3; /* Yellow/Gold */
-    color: @background;
-}
-
-#pulseaudio.muted {
-    background-color: @color8; /* Greyed out */
-    color: @foreground;
-}
-
-#wireplumber {
-    background-color: @color3;
-    color: @background;
-}
-
-#wireplumber.muted {
-    background-color: @color9;
-}
-
-#custom-media {
-    background-color: @color2;
-    color: @background;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: @color2;
-}
-
-#custom-media.custom-vlc {
-    background-color: @color3;
-}
-
-#temperature {
-    background-color: @color12; /* Orange */
-    color: @background;
-}
-
-#temperature.critical {
-    background-color: @color9; /* Red */
-}
-
+/* --- Tray --- */
 #tray {
-    background-color: @color0;
+    background-color: @background;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: 4px;
 }
 
 #tray > .passive {
@@ -248,81 +156,10 @@ label:focus {
     background-color: @color9;
 }
 
-#idle_inhibitor {
-    background-color: @color0;
-}
-
-#idle_inhibitor.activated {
-    background-color: @foreground;
-    color: @background;
-}
-
-#mpd {
-    background-color: @color2;
-    color: @background;
-}
-
-#mpd.disconnected {
-    background-color: @color9;
-}
-
-#mpd.stopped {
-    background-color: @color8;
-}
-
-#mpd.paused {
-    background-color: @color4;
-}
-
-#language {
-    background: @color6;
-    color: @background;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: @color2;
-    color: @background;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-    background-color: transparent;
-}
-
-#privacy {
-    padding: 0;
-}
-
-#privacy-item {
-    padding: 0 5px;
-    color: @foreground;
-}
-
-#privacy-item.screenshare {
-    background-color: @color5;
-}
-
-#privacy-item.audio-in {
-    background-color: @color2;
-}
-
-#privacy-item.audio-out {
-    background-color: @color4;
+/* --- Animations --- */
+@keyframes blink {
+    to {
+        background-color: @foreground;
+        color: @background;
+    }
 }

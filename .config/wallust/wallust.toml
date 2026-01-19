@@ -74,4 +74,6 @@ zathurarc = { src = 'zathurarc', dst = '~/.config/zathura/zathurarc' }
 
 vicinae = { src = 'vicinae.toml', dst = '~/.local/share/vicinae/themes/wallust.toml'}
 
+wofi = { src = 'wofi.css', dst = '~/.config/wofi/style.css'}
+
 sway = { src = 'sway-colors.template', dst = '~/.config/sway/colors'}

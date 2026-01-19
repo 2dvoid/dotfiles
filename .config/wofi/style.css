@@ -1,0 +1,61 @@
+window {
+    margin: 0px;
+    padding: 0px;
+    border: 3px solid #997566;
+    border-radius: 10px;
+    background-color: #0F0F11;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
+
+#input {
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    color: #0F0F11;
+    background-color: #997566;
+    padding: 10px;
+}
+
+#input image {
+    color: #0F0F11;
+}
+
+#inner-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: #EFDDD4;
+}
+
+/* The selected entry */
+#entry:selected {
+    background-color: #997566;
+    border-radius: 5px;
+    outline: none;
+}
+
+#entry:selected #text {
+    color: #0F0F11;
+}
+
+/* Unselected entries */
+#entry {
+    padding: 5px;
+}
