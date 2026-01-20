@@ -1,9 +1,9 @@
 window {
     margin: 0px;
     padding: 0px;
-    border: 3px solid #997566;
+    border: 3px solid #838160;
     border-radius: 10px;
-    background-color: #0F0F11;
+    background-color: #0E0F11;
     font-family: "JetBrainsMono Nerd Font";
     font-size: 14px;
 }
@@ -12,13 +12,13 @@ window {
     margin: 5px;
     border: none;
     border-radius: 5px;
-    color: #0F0F11;
-    background-color: #997566;
+    color: #0E0F11;
+    background-color: #838160;
     padding: 10px;
 }
 
 #input image {
-    color: #0F0F11;
+    color: #0E0F11;
 }
 
 #inner-box {
@@ -41,18 +41,18 @@ window {
 #text {
     margin: 5px;
     border: none;
-    color: #EFDDD4;
+    color: #D8DCD4;
 }
 
 /* The selected entry */
 #entry:selected {
-    background-color: #997566;
+    background-color: #838160;
     border-radius: 5px;
     outline: none;
 }
 
 #entry:selected #text {
-    color: #0F0F11;
+    color: #0E0F11;
 }
 
 /* Unselected entries */

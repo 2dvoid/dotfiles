@@ -1,24 +1,24 @@
 # Define variables using wallust colors
-set $background #0F0F11
-set $foreground #EFDDD4
-set $cursor #F2707F
+set $background #0E0F11
+set $foreground #D8DCD4
+set $cursor #969F93
 
-set $color0  #3A3A3C
-set $color1  #5E6A5F
-set $color2  #C73C52
-set $color3  #CD3A51
-set $color4  #997566
-set $color5  #9A7463
-set $color6  #9C7663
-set $color7  #DFC5B9
-set $color8  #9C8A81
-set $color9  #6A7A6B
-set $color10 #F61134
-set $color11 #FD0128
-set $color12 #C5937D
-set $color13 #CD9B85
-set $color14 #D09D84
-set $color15 #DFC5B9
+set $color0  #393A3C
+set $color1  #657268
+set $color2  #6A7369
+set $color3  #847874
+set $color4  #838160
+set $color5  #7B7F73
+set $color6  #7A8273
+set $color7  #BFC5BA
+set $color8  #868A82
+set $color9  #738478
+set $color10 #738072
+set $color11 #8C7A74
+set $color12 #89864F
+set $color13 #929785
+set $color14 #909B85
+set $color15 #BFC5BA
 
 # Define class colors
 # class                 border   bg       text     indicator  child_border

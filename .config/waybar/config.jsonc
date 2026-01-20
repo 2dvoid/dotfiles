@@ -19,7 +19,7 @@
         "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
-            "1:productivity": "󰹕",
+            "1:productivity": "󰠮",
             "2:university": "󰸓",
             "3:editor": "",
             "4:search": "󰈹",

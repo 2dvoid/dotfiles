@@ -1,4 +1,6 @@
-# Created by newuser for 5.9
+
+# Initialize Sheldon Plugin Manager
+eval "$(sheldon source)"
 
 ## Setup Ruby Dev Environment
 eval "$(rbenv init -)"
