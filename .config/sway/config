@@ -71,7 +71,7 @@ output HDMI-A-1 {
 workspace_layout stacking
 focus_wrapping no
 smart_borders on
-default_border pixel 4
+default_border pixel 2
 font pango:IosevkaNerdFontMono 10
 title_align center
 #titlebar_padding 5
@@ -285,6 +285,7 @@ bindsym --release $mod+Control+l exec sway-lock
 #############################################
 output * bg $HOME/.config/background fill
 include $HOME/.config/sway/colors
+seat * xcursor_theme Adwaita 10
 
 # Colors (Blur Titlebar)
 #client.focused          #4c7899 #285577E0 #ffffff #2e9ef4

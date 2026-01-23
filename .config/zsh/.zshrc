@@ -18,3 +18,8 @@ else
     export VISUAL='nvim'
     export EDITOR='nvim'
 fi
+
+# XAMPP Aliases
+alias dbup='sudo /opt/lampp/lampp start'
+alias dbdown='sudo /opt/lampp/lampp stop'
+alias dbrestart='sudo /opt/lampp/lampp restart'
