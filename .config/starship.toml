@@ -1,0 +1,11 @@
+# Move the prompt to a new line just like Pure
+add_newline = true
+
+[character]
+success_symbol = "[❯](bold #83a598)" # A muted blue/cyan
+error_symbol = "[❯](bold #fb4934)"   # A muted red for errors
+
+[directory]
+truncation_length = 2
+truncation_symbol = "…/"
+style = "bold #bdae93" # Muted "Gruvbox-style" foreground

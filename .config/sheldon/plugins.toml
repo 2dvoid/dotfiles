@@ -19,11 +19,6 @@ shell = "zsh"
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
 
-# The Prompt: Pure (Async, minimal, fast)
-[plugins.pure]
-github = "sindresorhus/pure"
-use = ["async.zsh", "pure.zsh"]
-
 # Syntax Highlighting (Must be loaded last-ish, but Sheldon handles order well)
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
@@ -32,3 +27,7 @@ github = "zsh-users/zsh-syntax-highlighting"
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
+
+## Fzf Tab
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"
