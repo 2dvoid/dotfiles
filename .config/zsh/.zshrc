@@ -49,6 +49,7 @@ fi
 alias dbup='sudo /opt/lampp/lampp start'
 alias dbdown='sudo /opt/lampp/lampp stop'
 alias dbrestart='sudo /opt/lampp/lampp restart'
+alias mysqlup='/opt/lampp/bin/mysql -u root -p'
 
 
 ## Fzf Pluging Configs

@@ -18,6 +18,7 @@ opt.smartcase = true
 
 -- Relative line numbers
 opt.relativenumber = true
+opt.numberwidth = 4
 
 -- Use spaces instead of tabs
 opt.expandtab = true
@@ -46,3 +47,8 @@ opt.wrap = false
 
 -- Access System Clipboard
 opt.clipboard = "unnamedplus"
+
+-- Line Number Config
+opt.statuscolumn = " %l %s "
+-- Keeps the sign column at 1 cell wide so it doesn't jump around
+vim.opt.signcolumn = "yes:1"

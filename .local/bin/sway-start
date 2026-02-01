@@ -103,12 +103,14 @@ export XDG_CURRENT_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
 # for xdg-open - avoids running xprop which hangs if Xwayland is not running
 export DE=generic
+## Fixes Frezzing issue while using fractional scaling
+export WLR_NO_HARDWARE_CURSORS=1
 
 # to stop warnings like "dbind-WARNING **: ... Couldn't register with accessibility bus: Did not receive a reply."
 export NO_AT_BRIDGE=1
 
 # see https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
-[[ $( hostname ) == aloo ]] && export WLR_NO_HARDWARE_CURSORS=1
+##[[ $( hostname ) == aloo ]] && export WLR_NO_HARDWARE_CURSORS=1
 
 [[ "$SSH_ASKPASS" ]] || export SSH_ASKPASS="gnome-ssh-askpass"
 
