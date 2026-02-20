@@ -46,11 +46,16 @@ else
 fi
 
 # XAMPP Aliases
-alias dbup='sudo /opt/lampp/lampp start'
-alias dbdown='sudo /opt/lampp/lampp stop'
-alias dbrestart='sudo /opt/lampp/lampp restart'
-alias mysqlup='/opt/lampp/bin/mysql -u root -p'
+# Currently not using Xampp
+# alias dbup='sudo /opt/lampp/lampp start'
+# alias dbdown='sudo /opt/lampp/lampp stop'
+# alias dbrestart='sudo /opt/lampp/lampp restart'
+# alias mysqlup='/opt/lampp/bin/mysql -u root -p'
 
+# Database Learing Aliases:
+alias dbup='sudo systemctl start mariadb'
+alias dbdown='sudo systemctl stop mariadb'
+alias dbrestart='sudo systemctl restart mariadb'
 
 ## Fzf Pluging Configs
 # Disable the default standardized sort (let fzf handle it)

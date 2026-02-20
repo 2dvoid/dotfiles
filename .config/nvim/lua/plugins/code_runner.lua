@@ -21,15 +21,24 @@ return {
         float_hl = "Normal",
         blend = 0,
       },
-      filetype = {
-        java = { "cd $dir &&", "javac $fileName &&", "java $fileNameWithoutExt" },
-        python = "python3 -u",
-        lua = "lua",
-        ruby = "ruby",
-        c = { "cd $dir &&", "gcc $fileName -o $fileNameWithoutExt &&", "./$fileNameWithoutExt" },
-        cpp = { "cd $dir &&", "g++ $fileName -o $fileNameWithoutExt &&", "./$fileNameWithoutExt" },
-        sh = "bash",
-      },
+      -- filetype = {
+      --   java = { "cd $dir &&", "javac $fileName &&", "java $fileNameWithoutExt" },
+      --   python = "python3 -u",
+      --   lua = "lua",
+      --   ruby = "ruby",
+      --   c = { "cd $dir &&", "gcc $fileName -o $fileNameWithoutExt &&", "./$fileNameWithoutExt" },
+      --   cpp = { "cd $dir &&", "g++ $fileName -o $fileNameWithoutExt &&", "./$fileNameWithoutExt" },
+      --   sh = "bash",
+      -- },
+        filetype = {
+          java = { "cd \"$dir\" &&", "javac \"$fileName\" &&", "java \"$fileNameWithoutExt\"" },
+          python = "python3 -u",
+          lua = "lua",
+          ruby = "ruby",
+          c = { "cd \"$dir\" &&", "gcc \"$fileName\" -o \"$fileNameWithoutExt\" &&", "./\"$fileNameWithoutExt\"" },
+          cpp = { "cd \"$dir\" &&", "g++ \"$fileName\" -o \"$fileNameWithoutExt\" &&", "./\"$fileNameWithoutExt\"" },
+          sh = "bash",
+        },
     })
 
     -- 2. THE FIX: Auto-enter Insert Mode when a Terminal opens
