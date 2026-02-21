@@ -2,7 +2,6 @@ return {
     "erl-koenig/theme-hub.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope-ui-select.nvim",
         -- Optional: for themes that use lush (will be notified if a theme requires it)
         -- "rktjmp/lush.nvim"
     },
@@ -11,6 +10,6 @@ return {
             -- Configuration options (see below)
             persistent = true,
         })
-        require("telescope").load_extension("ui-select")
+        -- require("telescope").load_extension("ui-select")
     end,
 }

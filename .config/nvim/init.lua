@@ -1,8 +1,2 @@
--- Options
-require("config.options")
-
--- Keybindings
-require("config.keymaps")
-
--- Package Manager
+-- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
