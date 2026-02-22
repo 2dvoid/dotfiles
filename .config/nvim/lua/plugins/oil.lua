@@ -9,12 +9,18 @@ return {
         view_options = {
             show_hidden = false,
         },
+        columns = {
+            "icon",
+            -- "permissions",
+            -- "size",
+            -- "mtime",
+        },
     },
 
     keys = {
-        { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
-        { "<leader>e", "<cmd>Oil<cr>", desc = "Open Oil Explorer" },
-        { "<leader>E", "<cmd>Oil .<cr>", desc = "Open Oil Explorer (cwd)" },
+        { "-", "<cmd>Oil --preview<cr>", desc = "Open parent directory" },
+        { "<leader>e", "<cmd>Oil --preview<cr>", desc = "Open Oil Explorer" },
+        { "<leader>E", "<cmd>Oil . --preview<cr>", desc = "Open Oil Explorer (cwd)" },
     },
 
     -- Optional dependencies
