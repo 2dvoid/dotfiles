@@ -15,3 +15,12 @@ vim.api.nvim_create_autocmd("TermOpen", {
         vim.cmd("startinsert")
     end,
 })
+
+-- Disable Auto Commenting New Line
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "r", "o", "c" })
+    end,
+    desc = "Disable auto-commenting on new line",
+})

@@ -45,6 +45,10 @@ else
     export EDITOR='nvim'
 fi
 
+# Aliases
+alias ls='lsd'
+
+
 # XAMPP Aliases
 # Currently not using Xampp
 # alias dbup='sudo /opt/lampp/lampp start'
