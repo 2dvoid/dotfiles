@@ -65,5 +65,5 @@ font-size = 14
 # Adds subtle vertical breathing room between lines—highly recommended for Neovim
 adjust-cell-height = 10%
 
-background-opacity = 0.9
+background-opacity = 0.8
 # background-blur = 90

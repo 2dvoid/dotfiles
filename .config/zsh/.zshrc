@@ -10,6 +10,18 @@ eval "$(rbenv init -)"
 # Stop Terminal Freezing on ctrl+s
 stty -ixon
 
+## Vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+## Edit long command in an editor
+export EDITOR='nvim' # or 'vim'
+# Enable the edit-command-line widget
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
+
 # -----------------------------
 # History Configuration
 # -----------------------------
@@ -51,15 +63,15 @@ alias ls='lsd'
 
 # XAMPP Aliases
 # Currently not using Xampp
-# alias dbup='sudo /opt/lampp/lampp start'
-# alias dbdown='sudo /opt/lampp/lampp stop'
-# alias dbrestart='sudo /opt/lampp/lampp restart'
-# alias mysqlup='/opt/lampp/bin/mysql -u root -p'
+alias dbup='sudo /opt/lampp/lampp start'
+alias dbdown='sudo /opt/lampp/lampp stop'
+alias dbrestart='sudo /opt/lampp/lampp restart'
+alias mysqlup='/opt/lampp/bin/mysql -u root -p'
 
 # Database Learing Aliases:
-alias dbup='sudo systemctl start mariadb'
-alias dbdown='sudo systemctl stop mariadb'
-alias dbrestart='sudo systemctl restart mariadb'
+# alias dbup='sudo systemctl start mariadb'
+# alias dbdown='sudo systemctl stop mariadb'
+# alias dbrestart='sudo systemctl restart mariadb'
 
 ## Fzf Pluging Configs
 # Disable the default standardized sort (let fzf handle it)
