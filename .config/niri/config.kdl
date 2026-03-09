@@ -16,7 +16,7 @@ input {
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
             // Swap Caps Lock with Escape and Ctrl with Alt
-            options "caps:swapescape,ctrl:swap_lalt_lctl,ctrl:swap_ralt_rctl"
+            //options "caps:swapescape,ctrl:swap_lalt_lctl,ctrl:swap_ralt_rctl"
 
 
             // If this section is empty, niri will fetch xkb settings
