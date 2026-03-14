@@ -49,7 +49,7 @@
 # resize-overlay-duration = 4s 200ms
 #
 # Theme
-theme = dankcolors
+#theme = dankcolors
 
 # Window Padding
  window-padding-x = 20
@@ -57,7 +57,7 @@ theme = dankcolors
 
 # Fonts
 font-family = "JetBrainsMono NFM Regular"
-font-size = 14
+# font-size = 14
 
 # Slightly thickens the font, which renders much crisper on macOS Retina displays
 #font-thicken = true
@@ -65,5 +65,5 @@ font-size = 14
 # Adds subtle vertical breathing room between lines—highly recommended for Neovim
 adjust-cell-height = 10%
 
-background-opacity = 0.9
+# background-opacity = 0.9
 # background-blur = 90
