@@ -1,0 +1,153 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2026-06-23T00:43:55Z",
+      "resolved": "github:NixOS/nixpkgs/89570f24e97e614aa34aa9ab1c927b6578a43775?lastModified=1782175435&narHash=sha256-EMzXKmnOtBQ2MnvpiNOm7E%2BkOMvdPrIKaeg52Tip2Uk%3D"
+    },
+    "neovim@latest": {
+      "last_modified": "2026-06-12T02:02:01Z",
+      "resolved": "github:NixOS/nixpkgs/173d0ad7a974f8543a9ab01d2271b2e290341b33#neovim",
+      "source": "devbox-search",
+      "version": "0.12.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wgnzpbvw1kphpab63xj7bzgg4l3k41d2-neovim-0.12.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wgnzpbvw1kphpab63xj7bzgg4l3k41d2-neovim-0.12.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mqxxpc8r6rvvsihbw4ijhvkq3j7ix3ml-neovim-0.12.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mqxxpc8r6rvvsihbw4ijhvkq3j7ix3ml-neovim-0.12.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/494xy7wg6w97ivh4m92imx9znnjcclz7-neovim-0.12.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/494xy7wg6w97ivh4m92imx9znnjcclz7-neovim-0.12.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lzjp315js7rsxb52iswxbs5zlf7yn44g-neovim-0.12.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lzjp315js7rsxb52iswxbs5zlf7yn44g-neovim-0.12.3"
+        }
+      }
+    },
+    "stow@latest": {
+      "last_modified": "2026-05-21T08:15:18Z",
+      "resolved": "github:NixOS/nixpkgs/4a29d733e8a7d5b824c3d8c958a946a9867b3eb2#stow",
+      "source": "devbox-search",
+      "version": "2.4.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/nmd35nq3wwwhcvlpxaaqw7wblk75baja-stow-2.4.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/nmd35nq3wwwhcvlpxaaqw7wblk75baja-stow-2.4.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/axvm3v9b6a7qfql4xprp3zx1mzmgs3wp-stow-2.4.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/axvm3v9b6a7qfql4xprp3zx1mzmgs3wp-stow-2.4.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/s0fsjpxk8lvb4l79rcfwib6i7i39s24z-stow-2.4.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/s0fsjpxk8lvb4l79rcfwib6i7i39s24z-stow-2.4.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1gnpicr1qs55b1xwb3ic01mgkwkbnpxf-stow-2.4.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/1gnpicr1qs55b1xwb3ic01mgkwkbnpxf-stow-2.4.1"
+        }
+      }
+    },
+    "yazi@latest": {
+      "last_modified": "2026-06-13T05:27:44Z",
+      "resolved": "github:NixOS/nixpkgs/5a722a7155bfc9fbe657f28d26b71860d95324bc#yazi",
+      "source": "devbox-search",
+      "version": "26.5.6",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/pcq0lhaj4dhj21qb9f575k3x7g6a4vzz-yazi-26.5.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/pcq0lhaj4dhj21qb9f575k3x7g6a4vzz-yazi-26.5.6"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/5v52342qsywjf4cvl861iiyghly6kjrf-yazi-26.5.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/5v52342qsywjf4cvl861iiyghly6kjrf-yazi-26.5.6"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1fqmpg2haplj7fybamgw5ykf5klmnx0n-yazi-26.5.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/1fqmpg2haplj7fybamgw5ykf5klmnx0n-yazi-26.5.6"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/x2dj1va31ggr9glpdnwjr90ahm2i4n77-yazi-26.5.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/x2dj1va31ggr9glpdnwjr90ahm2i4n77-yazi-26.5.6"
+        }
+      }
+    }
+  }
+}
