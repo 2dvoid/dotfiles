@@ -24,6 +24,19 @@ return {
             },
             filetype = {
                 java = { 'cd "$dir" &&', 'javac "$fileName" &&', 'java "$fileNameWithoutExt"' },
+                -- Go
+                go = "cd $dir && go run $fileName",
+
+                -- Alternatively, if you are working within Go modules and
+                -- want to run the entire package, use this instead:
+                -- go = "cd $dir && go run .",
+
+                -- If you prefer to build the binary and then execute it:
+                -- go = {
+                --   "cd $dir &&",
+                --   "go build -o $fileNameWithoutExt $fileName &&",
+                --   "./$fileNameWithoutExt"
+                --  },
                 python = "python3 -u",
                 lua = "lua",
                 ruby = "ruby",
