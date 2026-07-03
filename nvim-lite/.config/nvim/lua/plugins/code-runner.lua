@@ -9,18 +9,21 @@ return {
 
     -- Settings
     opts = {
-        mode = "float",
-        float = {
-            close_key = "<ESC>",
-            border = "rounded",
-            height = 0.8,
-            width = 0.8,
-            x = 0.5,
-            y = 0.5,
-            border_hl = "FloatBorder",
-            float_hl = "Normal",
-            blend = 0,
-        },
+        mode = "term",
+	focus = true,
+        startinsert = true,
+	-- Floating Mode
+        -- float = {
+        --     close_key = "<ESC>",
+        --     border = "rounded",
+        --     height = 0.8,
+        --     width = 0.8,
+        --     x = 0.5,
+        --     y = 0.5,
+        --     border_hl = "FloatBorder",
+        --     float_hl = "Normal",
+        --     blend = 0,
+        -- },
         filetype = {
             -- Compiled Languages
 	    c = { 'cd "$dir" &&', 'gcc "$fileName" -o "$fileNameWithoutExt" &&', './"$fileNameWithoutExt"' },
