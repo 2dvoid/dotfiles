@@ -6,5 +6,5 @@
   "mini.icons": { "branch": "main", "commit": "24dbea2195c477e57d581215839a6ab915f34b14" },
   "mini.pairs": { "branch": "main", "commit": "fd150ac39b78e6a2286f5138e472b7dc7eba43b9" },
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
-  "yazi.nvim": { "branch": "main", "commit": "1fb8b04bee3d0e42e9966e87772428906b184df8" }
+  "yazi.nvim": { "branch": "main", "commit": "f91974a6785be076fd9b3d4b981a0ebc50bca045" }
 }

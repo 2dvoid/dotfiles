@@ -31,10 +31,8 @@ require("lazy").setup({
 	install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
 	checker = {
-		-- Set to true to let it check in the background,
-		-- but false to kill the annoying popup completely.
-		enabled = true,
-		notify = false,
+        -- Update checker
+		enabled = false,
 	},
 
 	change_detection = {
