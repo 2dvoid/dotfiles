@@ -1,30 +1,9 @@
-## Load Compinit
-autoload -U compinit; compinit
+# =============================================================================
+# MINIMAL ZSH CONFIGURATION
+# Pure, bloat-free, and intuitively structured.
+# =============================================================================
 
-# Initialize Sheldon Plugin Manager
-eval "$(sheldon source)"
-
-## Setup Ruby Dev Environment
-eval "$(rbenv init -)"
-
-# Stop Terminal Freezing on ctrl+s
-stty -ixon
-
-## Vi mode
-bindkey -v
-export KEYTIMEOUT=1
-
-## Edit long command in an editor
-export EDITOR='nvim' # or 'vim'
-# Enable the edit-command-line widget
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd 'v' edit-command-line
-
-
-# -----------------------------
-# History Configuration
-# -----------------------------
+# --- HISTORY --------------------------------------------------------------
 
 # Use XDG_CACHE_HOME if available, otherwise default to ~/.cache
 XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
@@ -36,63 +15,86 @@ fi
 
 # Set the file path
 HISTFILE="$XDG_CACHE_HOME/zsh/history"
-
-# History behaviors
 HISTSIZE=10000
 SAVEHIST=10000
-setopt EXTENDED_HISTORY
-setopt SHARE_HISTORY
-setopt APPEND_HISTORY
-setopt HIST_IGNORE_DUPS
-#-----------------------------
+setopt APPEND_HISTORY          # Append to the history file, don't overwrite it
+setopt SHARE_HISTORY           # Share history across multiple open terminal tabs
+setopt HIST_IGNORE_ALL_DUPS    # Keep the history clean by dropping duplicate commands
+setopt HIST_REDUCE_BLANKS      # Remove unnecessary whitespace from history entries
 
-# Set default editor based on the environment
-if [ -n "$SWAYSOCK" ]; then
-    # We are in Sway, so use the graphical editor
-    export VISUAL='neovide'
-    export EDITOR='neovide'
-else
-    # We are in a TTY or other environment, use the terminal editor
-    export VISUAL='nvim'
-    export EDITOR='nvim'
-fi
+# --- COMPLETION -----------------------------------------------------------
+# Initialize Zsh's built-in completion system
+autoload -Uz compinit
+compinit -d "$HOME/.cache/zsh/.zcompdump"
 
-# Aliases
-alias ls='lsd'
+# Enable an intuitive, navigable menu for tab completions
+zstyle ':completion:*' menu select
+
+# Colorize the completion output automatically
+zstyle ':completion:*' list-colors ''
+
+# Case-insensitive tab completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# --- 3. SANE DEFAULTS --------------------------------------------------------
+setopt AUTO_CD                 # Change directory simply by typing its name (no 'cd' needed)
+setopt INTERACTIVE_COMMENTS    # Allow the use of '#' to write comments in the prompt
+setopt NO_BEEP                 # Disable terminal beeps to maintain a quiet environment
 
 
-# XAMPP Aliases
-# Currently not using Xampp
-alias dbup='sudo /opt/lampp/lampp start'
-alias dbdown='sudo /opt/lampp/lampp stop'
-alias dbrestart='sudo /opt/lampp/lampp restart'
-alias mysqlup='/opt/lampp/bin/mysql -u root -p'
+# --- PROMPT ---------------------------------------------------------------
 
-# Database Learing Aliases:
-# alias dbup='sudo systemctl start mariadb'
-# alias dbdown='sudo systemctl stop mariadb'
-# alias dbrestart='sudo systemctl restart mariadb'
+#Vi mode
+bindkey -v
+export KEYTIMEOUT=15
 
-## Fzf Pluging Configs
-# Disable the default standardized sort (let fzf handle it)
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-# PREVIEW SECTION: This is the game changer.
-# When you tab on a directory (cd, z, etc.), show its contents (using eza or ls)
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-# When you tab on a file (cat, nvim, etc.), show the file content
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-# Switch to standard "reverse" layout (list starts at top, grows down)
-# This feels more natural for a drop-down menu
-zstyle ':fzf-tab:*' fzf-flags --height=40% --layout=reverse
-# Use the same keybindings as your Vim/Neovim setup for navigating the list
-zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:down,ctrl-k:up,ctrl-d:preview-page-down,ctrl-u:preview-page-up'
-# The critical flag is --color=always
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath'
-# Load default colors for file types (directories blue, scripts green, etc.)
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# Map 'jk' to switch from insert mode to normal mode
+bindkey -M viins 'jk' vi-cmd-mode
 
-## Setup zoxide
-eval "$(zoxide init zsh)"
+# Prompot design
+autoload -U colors && colors
 
-## Setup Starship Prompt
-eval "$(starship init zsh)"
+function zle-line-init zle-keymap-select {
+    local MODE_INDICATOR
+    
+    if [[ $KEYMAP == vicmd ]]; then
+        # Normal Mode: Red '>' and a solid block cursor (\e[2 q)
+        MODE_INDICATOR="%{$fg_bold[red]%}<%{$reset_color%}"
+        echo -ne '\e[2 q'
+    else
+        # Insert Mode: Green '>' and a vertical line cursor (\e[6 q)
+        MODE_INDICATOR="%{$fg_bold[green]%}>%{$reset_color%}"
+        echo -ne '\e[6 q'
+    fi
+
+    # PROMPT STRUCTURE:
+    # %3~    : Shows the directory path, trimmed to only the last 3 levels
+    # $'\n'  : Drops the input indicator to a fresh, clean second line
+    PROMPT="%{$fg[blue]%}%3~%{$reset_color%}"$'\n'"$MODE_INDICATOR "
+    
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+
+
+# --- ALIASES --------------------------------------------------------------
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ll='ls -lh'
+alias la='ls -lAh'
+alias c='clear'
+
+
+## --- Custom Functions ------------------------------------------------------
+
+# Yazi 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
