@@ -1,6 +1,9 @@
 {
   "code_runner.nvim": { "branch": "main", "commit": "2a83e56fb6c71461c1a9a008ad35e4bc4e47b4f4" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
+  "mini.files": { "branch": "main", "commit": "a5689dae6b732955e33eec225b798d6815063179" },
+  "mini.icons": { "branch": "main", "commit": "24dbea2195c477e57d581215839a6ab915f34b14" },
   "mini.pairs": { "branch": "main", "commit": "fd150ac39b78e6a2286f5138e472b7dc7eba43b9" },
-  "no-neck-pain.nvim": { "branch": "main", "commit": "434fed70b1ee553f8f27e6da7b3899f71b3c6f99" }
+  "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
+  "yazi.nvim": { "branch": "main", "commit": "1fb8b04bee3d0e42e9966e87772428906b184df8" }
 }
