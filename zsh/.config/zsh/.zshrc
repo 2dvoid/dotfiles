@@ -86,12 +86,13 @@ alias grep='grep --color=auto'
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias c='clear'
+alias v='nvim'
 
 
 ## --- Custom Functions ------------------------------------------------------
 
 # Yazi 
-function y() {
+function f() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"

@@ -44,3 +44,8 @@ vim.opt.shiftwidth = 4     -- Pressing >> or << shifts the code by exactly 4 spa
 vim.opt.expandtab = true   -- Converts TAB presses into physical spaces (Absolute strict requirement for Python)
 vim.opt.smartindent = true -- Intuitively indents the next line when you press Enter after a { or a loop
 
+
+-- Case Insensitive Search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
