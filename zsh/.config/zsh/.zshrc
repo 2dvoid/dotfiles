@@ -99,3 +99,9 @@ function f() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	command rm -f -- "$tmp"
 }
+
+
+## Startup
+# Zoxide
+eval "$(zoxide init zsh)"
+
