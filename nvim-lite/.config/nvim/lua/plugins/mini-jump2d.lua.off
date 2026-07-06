@@ -1,0 +1,19 @@
+return {
+	"echasnovski/mini.jump2d",
+	version = "*",
+
+	keys = {
+		{
+			"s",
+			"<cmd>lua require('mini.jump2d').start(require('mini.jump2d').builtin_opts.single_character)<CR>",
+			desc = "Jump to single character",
+		},
+	},
+
+	opts = {
+		view = {
+			dim = true,
+		},
+		labels = "abcdefghijklmnopqrstuvwxyz",
+	},
+}

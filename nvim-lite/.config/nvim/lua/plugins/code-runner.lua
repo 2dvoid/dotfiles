@@ -4,7 +4,7 @@ return {
 
     -- Target
     keys = {
-        { "<leader>rr", "<cmd>w<CR><cmd>RunCode<CR>", desc = "Run current file" },
+        { "<leader>r", "<cmd>w<CR><cmd>RunCode<CR>", desc = "Run current file" },
     },
 
     -- Settings
