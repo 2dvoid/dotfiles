@@ -2,6 +2,9 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Line Wrap
+vim.opt.wrap = false
+
 -- Number column modification
 vim.opt.statuscolumn = " %s%l  "
 
@@ -48,4 +51,3 @@ vim.opt.smartindent = true -- Intuitively indents the next line when you press E
 -- Case Insensitive Search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-

@@ -5,6 +5,8 @@ vim.g.maplocalleader = "\\"
 -- Pressing jk simulates Escape in insert mode
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
 
+-- Toggle line number
+vim.keymap.set('n', '<leader>nn', '<cmd>set number! relativenumber!<CR>', { desc = 'Toggle line number' })
 
 -- Intuitively jump out of closing brackets and quotes using Tab
 vim.keymap.set('i', '<Tab>', function()
@@ -25,4 +27,3 @@ vim.keymap.set('i', '<Tab>', function()
         return "<Tab>"   -- Act like a normal Tab key
     end
 end, { expr = true, replace_keycodes = true, desc = "Tab out of pairs" })
-
