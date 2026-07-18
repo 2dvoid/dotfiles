@@ -51,3 +51,10 @@ vim.opt.smartindent = true -- Intuitively indents the next line when you press E
 -- Case Insensitive Search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Split Layout Fix
+-- Force vertical splits to open to the right of the current window
+vim.opt.splitright = true
+-- Force horizontal splits to open below the current window
+vim.opt.splitbelow = true
+
