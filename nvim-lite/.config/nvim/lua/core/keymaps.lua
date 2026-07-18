@@ -22,25 +22,35 @@ vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = 'Quit' })
 -- Toggle line number
 vim.keymap.set('n', '<leader>nn', '<cmd>set number! relativenumber!<CR>', { desc = 'Toggle line number' })
 
--- Intuitively jump out of closing brackets and quotes using Tab
+
+-- Tabout like behaviour
 vim.keymap.set('i', '<Tab>', function()
-    -- Capture the exact line and cursor column
+    -- Calculate the exact physical position of the cursor
     local col = vim.fn.col('.')
     local line = vim.fn.getline('.')
+    local char_under_cursor = line:sub(col, col)
     
-    -- Extract the single character immediately to the right of your cursor
-    local char_right = line:sub(col, col)
+    -- Boundaries you want to jump over
+    local boundaries = { 
+        ['"'] = true, 
+        ["'"] = true, 
+        ['`'] = true, 
+        [')'] = true, 
+        [']'] = true, 
+        ['}'] = true,
+        [';'] = true,
+        [','] = true,
+    }
     
-    -- The strict list of characters we are allowed to jump over
-    local closing_chars = { ")", "]", "}", '"', "'", "`" }
     
-    -- The Logic
-    if vim.tbl_contains(closing_chars, char_right) then
-        return "<Right>" -- Teleport over the bracket
+    if boundaries[char_under_cursor] then
+        return '<Right>'
     else
-        return "<Tab>"   -- Act like a normal Tab key
+        return '<Tab>'
     end
-end, { expr = true, replace_keycodes = true, desc = "Tab out of pairs" })
+end, { expr = true, replace_keycodes = true, desc = "Native Tabout" })
+
+
 
 -- Split Management
 -- -- Navigate between panes using Ctrl + hjkl
