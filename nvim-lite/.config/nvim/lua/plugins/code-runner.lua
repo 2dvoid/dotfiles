@@ -32,8 +32,8 @@ return {
       			"javac $fileName &&",
       			"java $fileNameWithoutExt"
     	   },
-            go = "cd $dir && go run $fileName",
-            
+            go = "cd $dir && go run .",
+
             -- Interpreted & Scripting Languages
             python = "python3 -u",
             lua = "lua",
