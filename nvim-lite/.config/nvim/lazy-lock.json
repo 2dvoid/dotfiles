@@ -7,6 +7,7 @@
   "mini.icons": { "branch": "main", "commit": "98faae31e9be1cc054ae63485e58ceb185efcad0" },
   "mini.pairs": { "branch": "main", "commit": "b1fd9df3bb4a41c8f45778a3859ee80ef6b367e3" },
   "mini.pick": { "branch": "main", "commit": "04e73ab07222508361095bb6e27621b315e6b9f1" },
+  "neotab.nvim": { "branch": "master", "commit": "e99d3e28c5a2066d2d368dfe4ef3827c8d75d337" },
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   "theme-hub.nvim": { "branch": "main", "commit": "0553b321257b1bfdd409d3644d7af2399127ee3e" },
   "yazi.nvim": { "branch": "main", "commit": "f91974a6785be076fd9b3d4b981a0ebc50bca045" }
